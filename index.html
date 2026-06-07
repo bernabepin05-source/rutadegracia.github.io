@@ -1,0 +1,5985 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+
+<!-- 🔥 viewport CORREGIDO -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ruta de Gracia — Catálogo de Moto</title>
+
+<!-- Fuente Poppins (solicitada) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===================== Variables y base ===================== */
+:root{
+  --accent:#d32f2f;
+  --muted:#6b7280;
+  --white:#ffffff;
+
+  --glass-light: rgba(255,255,255,0.22);
+  --panel-glass: #ffffff;
+
+  --overlay: rgba(0,0,0,0.45);
+  --radius:18px;
+
+  /* 🔥 FIX ancho seguro */
+  --panel-width:35%;
+  --panel-height-mobile:45vh;
+
+  --shadow-strong: 0 18px 50px rgba(12,12,14,0.18);
+  --shadow-soft: 0 8px 24px rgba(8,8,10,0.10);
+  --purple: #5B2C6F;
+}
+
+/* ===================== Reset / base ===================== */
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+/* 🔥 IMPORTANTE: no limitar ancho global */
+html, body{
+  height:100%;
+  width:100%;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* ===================== BODY ===================== */
+body{
+  font-family:'Poppins';
+
+  /* 🎨 FONDO DE MANCHAS GRANDES (BLOBS) */
+  background:
+    radial-gradient(circle at 20% 10%, #F4CFFF 30%, transparent 55%),
+    radial-gradient(circle at 75% 20%, #D067F0 30%, transparent 55%),
+    radial-gradient(circle at 40% 75%, #C508FF 10%, transparent 55%),
+    #1b0033;
+  
+  background-attachment: fixed;
+  background-size: cover;
+
+  color:#f1e6ff;
+}
+
+
+
+
+
+
+/* ===================== Header (cat + buscador integrado) ===================== */
+
+
+/* =========================================================
+   ===============  HEADER TOP (LOGO + ICONOS)  ============
+   ========================================================= */
+
+header{
+  position:relative;
+  z-index:120;
+
+  /* 👇 menos espacio a la izquierda, más equilibrio */
+  padding:6px 18px 6px 8px;
+
+  border-bottom:1px solid rgba(0,0,0,0.04);
+}
+
+.header-top{
+  max-width:1200px;
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:6px 0;
+  gap:12px;
+}
+
+/* --------- BRAND --------- */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin-left:-4px; /* 👈 ajuste fino del logo */
+}
+
+.brand img{
+  height:52px;
+  width:auto;
+  max-width:52px;
+  flex-shrink:0;
+}
+
+.brand h1{
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:1.2px;
+
+  background: linear-gradient(135deg, #ffffff, #cda2ff, #8e3bd1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 8px rgba(142,59,209,0.4),
+    0 0 18px rgba(142,59,209,0.25);
+}
+
+/* --------- ICONOS --------- */
+.top-icons{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px; /* 👈 espacio uniforme */
+}
+
+/* BOTONES ICONO */
+.icon-btn{
+  position:relative;
+  cursor:pointer;
+
+  width:42px;   /* 👈 MISMO tamaño para todos */
+  height:42px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:12px;
+  border:none;
+  background:transparent;
+
+  font-size:22px;
+  line-height:1; /* 👈 CLAVE para alinear vertical */
+
+  padding:0; /* 👈 quitamos padding irregular */
+
+  transition:all .15s ease;
+}
+
+/* ICONO INTERNO (emoji o svg) */
+.icon-btn i,
+.icon-btn svg{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1;
+}
+
+/* HOVER */
+.icon-btn:hover{
+  transform:scale(1.12);
+  background:rgba(0,0,0,0.05);
+}
+
+/* ❌ QUITAR LÍNEA RARA (teléfono) */
+.icon-btn{
+  text-decoration:none !important;
+}
+
+/* BADGE */
+.count-badge{
+  position:absolute;
+  top:-4px;
+  right:-6px;
+
+  background:var(--accent);
+  color:#fff;
+
+  border-radius:50%;
+  padding:2px 6px;
+
+  font-weight:700;
+  font-size:11px;
+
+  min-width:18px;
+  text-align:center;
+
+  box-shadow:0 6px 18px rgba(0,0,0,0.15);
+}
+/* =========================================================
+   ===================== MOBILE FIX ========================
+   ========================================================= */
+
+@media (max-width:480px){
+
+header{
+  padding:6px 18px 6px 4px; /* 👈 antes 8px → ahora más pegado */
+}
+
+  .header-top{
+    gap:14px;
+  }
+
+  .brand{
+    margin-left:-2px; /* 👈 ajuste fino móvil */
+  }
+
+  .brand img{
+    height:46px;
+  }
+
+  .brand h1{
+    font-size:20px;
+  }
+
+  .top-icons{
+    gap:18px;
+  }
+
+  .icon-btn{
+    padding:12px;
+    font-size:24px;
+  }
+
+}
+
+/* =========================================================
+   ===========  HEADER BOTTOM (CATEGORÍA + BUSCADOR) =======
+   ========================================================= */
+
+/* ===================== HEADER BOTTOM ===================== */
+.header-bottom{
+  max-width:1200px;
+  margin:0 auto;           /* antes 6px auto — ELIMINA ESPACIO EXTRA */
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  padding:5px 3px;        /* antes 6px — más compacto */
+  flex-wrap: nowrap;       /* evita que el buscador baje */
+}
+
+/* Contenedor principal */
+.search-wrap{
+  display:flex;
+  align-items:center;
+  gap:12px;                /* antes 18px → más compacto */
+  position:relative;
+  width:100%;
+  flex-wrap: nowrap;       /* evita salto de línea */
+}
+.header-bottom {
+  background: #f3e1ff; /* Lila suave */
+  padding: 9px 20px;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(160, 60, 255, 0.15);
+}
+
+
+
+
+
+
+
+
+
+
+/* ===================== BOTÓN DE CATEGORÍAS PREMIUM ===================== */
+.cat-btn{
+  flex:0 0 auto;           /* evita que se aplaste */
+  white-space:nowrap;
+
+  padding:7px 16px;        /* antes 8px → más delgado */
+  border-radius:12px;
+  font-weight:700;
+  font-size:15px;
+  cursor:pointer;
+
+  background: linear-gradient(135deg, #8e3bd1, #6e1f9e);
+  color:#fff;
+  border:2px solid rgba(140,60,190,0.7);
+  box-shadow:0 8px 20px rgba(142,59,209,0.18);
+
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  margin-left:0;
+  margin-right:0;          /* antes auto — CORREGIDO */
+
+  transition:all .25s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.cat-btn:hover{
+  background: linear-gradient(135deg, #a34cf0, #7e2fc1);
+  transform: translateY(-2px);
+  box-shadow:
+    0 14px 30px rgba(140,60,190,0.24),
+    0 4px 14px rgba(122,55,152,0.10) inset;
+}
+
+.cat-btn::after{
+  content:"";
+  position:absolute;
+  left:-80%;
+  top:0;
+  width:60%;
+  height:100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.22), transparent);
+  transform: skewX(-20deg);
+  transition:left .45s ease;
+}
+
+.cat-btn:hover::after{
+  left:140%;
+}
+
+/* ===================== BUSCADOR ===================== */
+.search{
+  flex:1 1 0%;
+  min-width:0;             /* evita que haga wrap */
+  display:flex;
+  align-items:center;
+}
+
+.search input{
+  width:100%;
+  box-sizing:border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ========= DROPDOWN PREMIUM: fade + slide + scale (siempre funciona) ========= */
+.cat-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+
+  width: 240px;
+  max-height: 260px;
+
+  display: flex;               /* YA NO se oculta con display:none */
+  flex-direction: column;
+
+  padding: 10px 0;
+
+  background: rgba(255,255,255,0.95);
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  overflow-y: auto;
+  z-index: 999;
+
+  /* Estado oculto */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateY(-16px) scale(0.90);
+
+  /* Transiciones → SIEMPRE animan */
+  transition:
+    opacity .55s ease,
+    transform .55s cubic-bezier(.16,.84,.39,1),
+    visibility 0s linear .55s;
+}
+
+/* Estado visible */
+.cat-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform: translateY(0) scale(1);
+
+  transition:
+    opacity .55s ease,
+    transform .55s cubic-bezier(.16,.84,.39,1),
+    visibility 0s;
+}
+
+/* Item */
+.cat-dropdown .item {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #222;
+  border-radius: 10px;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.cat-dropdown .item:hover {
+  background: rgba(140,60,190,0.15);
+  transform: translateX(6px);
+}
+
+/* Scroll bonito */
+.cat-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+.cat-dropdown::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.22);
+  border-radius: 6px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   =====================  BUSCADOR DERECHA =================
+   ========================================================= */
+
+
+.search{
+  position:relative;
+  flex:1.4;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+}
+
+.search input{
+  width:100%;
+  max-width:450px;
+  padding:12px 58px 12px 16px;
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,0.06);
+  background:rgba(255,255,255,0.95);
+  font-size:15px;
+  outline:none;
+  margin-left:auto;
+}
+
+.search .search-btn{
+  position:absolute;
+  right:4px;
+  top:50%;
+  transform:translateY(-50%);
+  padding:8px 12px;
+  border-radius:10px;
+  background:var(--accent);
+  color:#fff;
+  border:0;
+  cursor:pointer;
+  font-weight:700;
+  height:38px;
+  box-shadow:0 8px 20px rgba(211,47,47,0.12);
+}
+
+
+/* ===================== Categories bar ===================== */
+/* ================================
+   ⭐ BARRA DE CATEGORÍAS PREMIUM ⭐
+   ================================ */
+
+.category-bar {
+  position: relative;
+  width: 100%;
+  padding: 14px 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  backdrop-filter: blur(14px);
+  background: rgba(255,255,255,0.25);
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  transition: box-shadow .3s ease;
+}
+
+.category-bar::-webkit-scrollbar { display: none; }
+
+/* Glow cuando hay scroll */
+.category-bar.scrolling {
+  box-shadow: 0 12px 38px rgba(160, 80, 255, 0.35);
+}
+
+/* Contenedor interno */
+.category-bar .categories {
+  display: flex;
+  gap: 16px;
+  padding: 0 14px;
+}
+
+/* CHIP estilo vidrio */
+.category-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 10px 18px;
+  background: rgba(255,255,255,0.45);
+  border-radius: 14px;
+
+  border: 1px solid rgba(255,255,255,0.5);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+
+  cursor: pointer;
+  user-select: none;
+
+  /* Animación entrada */
+  opacity: 0;
+  transform: translateY(8px) scale(.96);
+  animation: catItemEnter .45s ease forwards;
+}
+
+/* Delay auto para animación en cascada */
+.category-item:nth-child(1) { animation-delay: 0.05s; }
+.category-item:nth-child(2) { animation-delay: 0.10s; }
+.category-item:nth-child(3) { animation-delay: 0.15s; }
+.category-item:nth-child(4) { animation-delay: 0.20s; }
+.category-item:nth-child(5) { animation-delay: 0.25s; }
+.category-item:nth-child(6) { animation-delay: 0.30s; }
+.category-item:nth-child(7) { animation-delay: 0.35s; }
+.category-item:nth-child(8) { animation-delay: 0.40s; }
+.category-item:nth-child(9) { animation-delay: 0.45s; }
+.category-item:nth-child(10) { animation-delay: 0.50s; }
+.category-item:nth-child(11) { animation-delay: 0.55s; }
+.category-item:nth-child(12) { animation-delay: 0.60s; }
+.category-item:nth-child(13) { animation-delay: 0.65s; }
+.category-item:nth-child(14) { animation-delay: 0.70s; }
+
+/* Animación entrada */
+@keyframes catItemEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Hover premium */
+.category-item:hover {
+  background: rgba(160,80,255,0.35);
+  color: #fff;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(130,70,255,0.3);
+}
+
+/* Activo */
+.category-item.active {
+  background: linear-gradient(135deg, #a060ff, #6d3aff);
+  color: #fff;
+  box-shadow: 0 6px 22px rgba(130,70,255,0.35);
+}
+
+/* Indicador de scroll a la derecha */
+.scroll-indicator {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+
+  background: rgba(160,80,255,0.35);
+  box-shadow: 0 0 14px rgba(160,80,255,0.65);
+
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.category-bar.scrolling .scroll-indicator {
+  opacity: 1;
+}
+
+/* ===================== CATEGORY ITEM (chip vidrio premium) ===================== */
+.category-item {
+  flex: 0 0 auto;
+
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  
+  color: #4a4a4a;
+
+  /* VIDRIO + Borde + color */
+  background: rgba(255,255,255,0.20);
+  border: 1px solid rgba(255,255,255,0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  /* Sombras tipo chip moderno */
+  box-shadow:
+    0 6px 12px rgba(0,0,0,0.05),
+    inset 0 0 12px rgba(255,255,255,0.3);
+
+  transition: all .25s ease, transform .25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto gradiente dinámico tipo Temu/Shein */
+.category-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(142,59,209,0.18), rgba(255,0,120,0.18));
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.category-item:hover::after {
+  opacity: 1;
+}
+
+/* Hover suave */
+.category-item:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 10px 20px rgba(142,59,209,0.25),
+    inset 0 0 14px rgba(255,255,255,0.4);
+  color: #5c0bbf;
+}
+
+/* ===================== ACTIVO (categoría seleccionada) ===================== */
+.category-item.active {
+  background: linear-gradient(135deg, #8e3bd1, #6e1f9e);
+  color: white;
+  border-color: rgba(255,255,255,0.5);
+
+  box-shadow:
+    0 12px 30px rgba(142,59,209,0.45),
+    inset 0 0 20px rgba(255,255,255,0.35);
+}
+
+/* Glow animado al activar */
+.category-item.active::after {
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,100,200,0.3));
+  opacity: 1;
+}
+
+/* ===================== ANIMACIÓN AL HACER SCROLL ===================== */
+/* Brilla un borde cuando el usuario desliza la barra */
+.category-bar.scrolling {
+  background: rgba(255,255,255,0.2);
+  box-shadow: inset 0 -6px 14px rgba(142,59,209,0.18);
+  transition: all .35s ease;
+}
+
+
+
+
+/* =========================================================
+   🔝 HEADER (MISMO ESTILO MORADO ORIGINAL)
+   ========================================================= */
+header {
+background: linear-gradient(90deg, #9d4edd, #7b2cbf, #5a189a);
+
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+
+  border-radius: 0 0 18px 18px;
+
+  box-shadow: 0 10px 22px rgba(123, 44, 191, 0.35);
+}
+
+
+/* =========================================================
+   🌌 CONTENEDOR PRODUCTOS
+   ========================================================= */
+.featured-window {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  
+  padding: 22px 14px;
+
+  background: linear-gradient(
+      180deg,
+      #E8D4FA 4%,
+      #c08bff 20%,
+      #9d4edd 100%
+  );
+
+  border-radius: 22px;
+
+  position: relative;
+  overflow: hidden; /* 👈 necesario para lluvia */
+}
+
+
+/* =========================================================
+   🏷️ TÍTULO
+   ========================================================= */
+.featured-title {
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 14px;
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  letter-spacing: -0.3px;
+
+  /* 🔥 glow + sombra real */
+  text-shadow:
+    0 0 12px rgba(200, 150, 255, 0.4),   /* glow */
+    0 4px 6px rgba(0, 0, 0, 0.7);       /* sombra real */
+
+  animation: fadeDown .6s ease forwards;
+}
+
+@keyframes fadeDown {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+
+/* =========================================================
+   📦 LISTA (SIN SCROLL VERTICAL)
+   ========================================================= */
+.featured-list {
+  display: flex;
+  gap: 12px;
+
+  overflow-x: auto;
+  overflow-y: hidden; /* 👈 FIX */
+
+  padding-bottom: 6px;
+
+  scrollbar-width: none;
+}
+
+.featured-list::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================================
+   🧱 CARDS
+   ========================================================= */
+.featured-card {
+  min-width: 200px;
+  max-width: 200px;
+  height: 280px;
+
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+
+  flex-shrink: 0;
+  cursor: pointer;
+
+  transform: translateY(20px);
+  opacity: 0;
+  animation: cardEnter .7s ease forwards;
+
+  transition: all .25s ease;
+}
+
+@keyframes cardEnter {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.featured-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+}
+
+
+/* 🖼️ IMAGEN */
+.featured-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 6px;
+}
+
+
+/* 📝 TEXTO */
+.featured-card h3 {
+  font-size: 13px;
+  font-weight: 800;
+  margin-top: 4px;
+  color: #000;
+  line-height: 1.25;
+}
+
+
+/* 💰 PRECIOS */
+.featured-price {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.featured-new {
+  color: #ff3b30;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.featured-old {
+  text-decoration: line-through;
+  color: #777;
+  font-size: 11px;
+}
+
+.featured-discount {
+  background: #ff3b30;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+
+/* 🔘 BOTÓN */
+.featured-add-btn {
+  width: 100%;
+  margin-top: auto;
+  padding: 9px;
+
+  background: linear-gradient(135deg, #7b2cbf, #9d4edd);
+  color: #fff;
+
+  border-radius: 14px;
+  font-weight: 900;
+  font-size: 13px;
+
+  transition: all .2s;
+}
+
+.featured-add-btn:hover {
+  background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+  transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   🌠 LLUVIA DE ESTRELLAS ORIGINAL (CORREGIDA)
+   ========================================================= */
+
+.featured-window::before {
+  content: "";
+  position: absolute;
+  inset: -200px 0 0 0; /* 👈 entrada suave */
+  z-index: 1;
+  pointer-events: none;
+
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+
+  box-shadow:
+    10px 40px white, 30px 120px #fff8, 60px 200px #ffd9ff,
+    90px 310px #ccf, 150px 260px white, 210px 360px #ffd9ff,
+    300px 90px #ffd9ff, 390px 340px #fff8, 480px 160px #fff7,
+    600px 40px #fff9, 720px 70px #fff7, 840px 90px white;
+
+  animation: rainStars 12s linear infinite;
+  transform: rotate(8deg);
+}
+
+@keyframes rainStars {
+  0%   { transform: translateY(-300px) rotate(8deg); }
+  100% { transform: translateY(300px) rotate(8deg); }
+}
+
+
+/* 🌌 NEBULOSA */
+.featured-window::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,180,255,0.2), transparent 70%),
+    radial-gradient(circle at 80% 50%, rgba(150,140,255,0.2), transparent 70%),
+    radial-gradient(circle at 40% 80%, rgba(120,220,255,0.18), transparent 70%);
+
+  filter: blur(35px);
+}
+
+
+/* CONTENIDO ENCIMA */
+.featured-window * {
+  position: relative;
+  z-index: 2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===================== Main grid & cards ===================== */
+.container{
+  max-width:1200px;
+  margin:22px auto;
+  padding:0 16px;
+  position:relative;
+  z-index:1;
+}
+
+.grid{
+  display:grid;
+  gap:18px;
+  align-items:start;
+}
+
+/* Responsive: ensure mobile always has 2 columns (even narrow phones) */
+@media (min-width:1201px){ 
+  .grid{grid-template-columns:repeat(4,1fr);} 
+}
+
+@media (max-width:1200px){ 
+  .grid{grid-template-columns:repeat(3,1fr);} 
+}
+
+@media (max-width:1024px){ 
+  .grid{grid-template-columns:repeat(2,1fr);} 
+}
+
+@media (max-width:600px){ 
+  .grid{grid-template-columns:repeat(2,1fr);} 
+}
+
+/* 🔥 Ajuste SOLO para celular */
+@media (max-width:600px){
+  .container{
+    padding-left:14px;
+    padding-right:14px;
+  }
+}
+
+/* 🔥 FIX UNIVERSAL CENTRADO PERFECTO (SIEMPRE AL FINAL) */
+.container{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.grid{
+  width:100%;
+}
+
+/* ========================================
+   CARD ESTILO PREMIUM + PRECIO PRO
+   ======================================== */
+.card{
+  position:relative;
+  background:#ffffff !important;
+  border-radius:20px;
+  padding:14px;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.06),
+    0 4px 12px rgba(0,0,0,0.04);
+
+  border:1px solid rgba(0,0,0,0.04);
+
+  transition: transform .3s cubic-bezier(.2,.8,.2,1),
+             box-shadow .3s ease;
+}
+
+/* Hover */
+.card:hover{
+  transform: translateY(-6px);
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.08),
+    0 8px 18px rgba(0,0,0,0.06);
+}
+
+/* Imagen */
+.card .thumb{
+  height:160px;
+  border-radius:12px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border:1px solid rgba(0,0,0,0.03);
+  position:relative; /* 👈 necesario para el sticker */
+}
+
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* 🔥 DESCUENTO FLASH COMPLETO */
+.discount-badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+
+  background: linear-gradient(135deg, #ff2e2e, #ff6a00);
+  color:#fff;
+
+  padding:6px 10px;
+  border-radius:999px;
+
+  font-size:13px;
+  font-weight:900;
+
+  box-shadow:0 6px 18px rgba(255,0,0,0.35);
+
+  transform: rotate(-8deg);
+  overflow:hidden; /* 👈 necesario para el brillo */
+
+  animation: flashPulse 1.2s infinite ease-in-out;
+}
+
+/* 💥 ANIMACIÓN PULSO */
+@keyframes flashPulse{
+  0%{
+    transform: rotate(-8deg) scale(1);
+    box-shadow:0 6px 18px rgba(255,0,0,0.35);
+  }
+  50%{
+    transform: rotate(-8deg) scale(1.12);
+    box-shadow:0 10px 28px rgba(255,0,0,0.6);
+  }
+  100%{
+    transform: rotate(-8deg) scale(1);
+    box-shadow:0 6px 18px rgba(255,0,0,0.35);
+  }
+}
+
+/* ✨ EFECTO BRILLO */
+.discount-badge::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:60%;
+  height:100%;
+
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.7),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  animation: shineMove 2.5s infinite;
+}
+
+/* ✨ ANIMACIÓN BRILLO */
+@keyframes shineMove{
+  0%{ left:-120%; }
+  100%{ left:140%; }
+}
+
+/* Título */
+.p-title{
+  font-weight:800;
+  font-size:16px;
+  margin-top:10px;
+  color:#111;
+  line-height:1.25;
+}
+
+/* ========= ANIMACIÓN TEMU (fade + slide up) ========= */
+@keyframes priceFadeUp {
+  0% { opacity: 0; transform: translateY(50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================== PRECIO NUEVO COMPACTO ===================== */
+.p-price{
+  margin-top:10px;
+  padding-top:8px;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+/* 🔥 FILA INTELIGENTE */
+.price-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-end;
+  gap:6px;
+}
+
+/* 💥 PRECIO ACTUAL */
+.now-price{
+  flex:1 1 auto;
+  min-width:0;
+
+  font-size:19px;
+  font-weight:900;
+  color:#ff2e2e;
+  text-shadow:0 0 8px rgba(255,50,50,0.25);
+  line-height:1.1;
+
+  animation: priceFadeUp .35s ease forwards;
+}
+
+.now-price::before{
+  content:"AHORA";
+  font-size:15px;
+  font-weight:800;
+  display:block;
+  letter-spacing:0.5px;
+  margin-bottom:2px;
+}
+
+/* 💸 PRECIO ANTES (2 LÍNEAS DERECHA) */
+.old-price{
+  flex:0 0 auto;
+  margin-left:auto;
+
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+
+  color:#000;
+
+  font-size:13px;
+  font-weight:800;
+
+  text-decoration: line-through;
+  text-decoration-color:#ff2e2e;
+  text-decoration-thickness:1.8px;
+
+  background:#FFD6D6;
+  padding:4px 10px;
+  border-radius:20px;
+
+  line-height:1.1;
+
+  animation: priceFadeUp .45s ease forwards;
+}
+
+/* 🔥 TEXTO ARRIBA */
+.old-price::before{
+  content:"Antes:";
+  font-size:10px;
+  font-weight:800;
+  margin-bottom:2px;
+  color:#000;
+}
+
+/* 🔥 DESCUENTO */
+.discount{
+  background:#ff3b30;
+  color:#fff;
+
+  padding:4px 10px;
+  border-radius:10px;
+
+  font-size:13px;
+  font-weight:700;
+
+  white-space:nowrap;
+  box-shadow:0 4px 12px rgba(0,0,0,0.12);
+
+  animation: priceFadeUp .55s ease forwards;
+}
+
+/* 🟢 AHORRO */
+.save-price{
+  font-size:12px;
+  font-weight:800;
+  color:#0a7d2c;
+  margin-top:2px;
+}
+.save-price::before{
+  content:"Ahorras ";
+}
+
+/* BOTONES */
+.actions{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+
+
+
+
+
+
+/* ===================== PRECIO MODAL ESTILO TABLA ===================== */
+
+.modal .p-price{
+  margin-top:10px;
+
+  display:grid;
+  grid-template-columns: repeat(3, auto); /* 🔥 3 columnas */
+  justify-content:center;
+  align-items:center;
+
+  column-gap:18px;
+  row-gap:2px;
+
+  text-align:center;
+
+  font-size:11px;
+  font-weight:700;
+}
+
+/* 🔥 TITULOS (Ahora / Antes / Ahorras) */
+.modal .p-price span{
+  display:flex;
+  flex-direction:column; /* 🔥 separa título y valor */
+  align-items:center;
+}
+
+/* TEXTO ARRIBA */
+.modal .p-price span::before{
+  font-size:10px;
+  font-weight:700;
+  color:#000;
+}
+
+/* AHORA */
+.modal .p-price span:nth-child(1){
+  color:#ff3b30;
+  font-size:13px;
+  font-weight:900;
+}
+.modal .p-price span:nth-child(1)::before{
+  content:"Ahora";
+}
+
+/* ANTES */
+.modal .p-price span:nth-child(2){
+  color:#777;
+  text-decoration:line-through;
+  font-size:11px;
+}
+.modal .p-price span:nth-child(2)::before{
+  content:"Antes";
+}
+
+/* AHORRAS */
+.modal .p-price span:nth-child(3){
+  color:#0a7d2c;
+  font-size:11px;
+  font-weight:800;
+}
+.modal .p-price span:nth-child(3)::before{
+  content:"Ahorras";
+}
+
+
+/* ======= BOTONES VER + AÑADIR — Estilo morado moderno ======= */
+
+.btn-view,
+.btn-add{
+  flex:1;
+  padding:10px 14px;
+  border-radius:14px;
+  border:0;
+  cursor:pointer;
+  font-weight:700;
+  font-size:14px;
+  color:#fff;
+  background: linear-gradient(135deg, #7b2cbf, #9d4edd);
+  box-shadow: 0 6px 18px rgba(123,44,191,0.35);
+  backdrop-filter: blur(6px);
+  transition: all .25s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+/* efecto brillo */
+.btn-view::after,
+.btn-add::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:120%;
+  height:100%;
+  background:rgba(255,255,255,0.25);
+  transform:skewX(-25deg);
+  transition:.4s;
+}
+
+.btn-view:hover::after,
+.btn-add:hover::after{
+  left:120%;
+}
+
+/* neon border al pasar el mouse */
+.btn-view:hover,
+.btn-add:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 20px rgba(157,78,221,0.65);
+}
+
+/* animación pulso suave */
+.btn-view:active,
+.btn-add:active{
+  transform:scale(0.92);
+}
+/* ===== BOTÓN CERRAR (ROJO PREMIUM) ===== */
+.close{
+  padding:10px 16px;
+  border-radius:12px;
+  background:#d83737;
+  color:white;
+  border:2px solid #b12222;
+  cursor:pointer;
+  font-weight:700;
+  transition:.25s ease;
+}
+
+.close:hover{
+  background:#ff4a4a;
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(200,0,0,0.3);
+}
+
+/* ====== ESTILOS PARA BOTONES DEL MODAL ====== */
+
+/* Contenedor de botones del modal */
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* --- ESTILO BASE --- */
+.btn-add-modal,
+.btn-close-modal {
+  padding: 8px 14px;          /* más pequeños */
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all .22s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---- BOTÓN AÑADIR (morado premium) ---- */
+.btn-add-modal {
+  background: linear-gradient(135deg, #7b2cbf, #9d4edd);
+  color: #fff;
+  border-color: rgba(140,60,190,0.7);
+  box-shadow: 0 6px 18px rgba(140,60,190,0.25);
+
+  /* 🔥 HACER MÁS PEQUEÑO */
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+.btn-add-modal:hover {
+  background: linear-gradient(135deg, #a24bef, #7d27c3);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(140,60,190,0.35);
+}
+
+/* ---- BOTÓN CERRAR (rojo premium) ---- */
+.btn-close-modal {
+  background: linear-gradient(135deg, #d63939, #a41f1f);
+  color: #fff;
+  border-color: rgba(214,57,57,0.7);
+  box-shadow: 0 6px 18px rgba(214,57,57,0.25);
+
+  /* 🔥 HACER MÁS PEQUEÑO */
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+.btn-close-modal:hover {
+  background: linear-gradient(135deg, #e34f4f, #b81f1f);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(214,57,57,0.35);
+}
+
+
+
+
+/* 🔥 LADO DERECHO */
+.modal .right{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+
+/* 🔥 CONTENIDO CON ALTURA FIJA Y SCROLL REAL */
+.modal .right-content{
+  max-height:60vh;   /* 🔥 límite real */
+  overflow-y:auto;
+
+  padding-right:8px;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+/* BOTONES */
+.modal-actions{
+  margin-top:10px;
+  display:flex;
+  gap:8px;
+}
+
+
+
+/* ===== HEADER ===== */
+.header-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 4px 10px;
+}
+
+/* ===== LOGO CONTENEDOR ===== */
+.brand{
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+}
+
+/* ===== LOGO ===== */
+.brand-title-img{
+  height: 67px !important;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display:block;
+
+  margin-left: -9px;
+}
+
+/* ===== ICONOS ===== */
+.top-icons{
+  display:flex;
+  align-items:center;
+  gap:16px;              /* 🔥 más separación */
+
+  width: 210px;          /* 🔥 un poco más de espacio */
+  justify-content:flex-end;
+  flex-shrink: 0;
+
+  margin-right: -11px;
+}
+
+/* ===== BOTONES ===== */
+.icon-btn{
+  font-size: 30px;       /* 🔥 más grandes ❤️ 🛒 */
+  width: 42px;           /* 🔥 área más grande */
+  height: 42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ===== ICONO UBICACIÓN ===== */
+.location-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width: 50px;
+  height: 50px;
+
+  margin-right: -6px;   /* 🔥 mover a la derecha */
+}
+
+.location-img{
+  width: 32px !important;   /* 🔥 más pequeño */
+  height: 32px !important;
+  max-width: none !important;
+  display:block;
+}
+
+/* 🔥 PROTECCIÓN GLOBAL (SE MANTIENE) */
+.header-top img{
+  max-width: 100%;
+}
+
+/* 📱 Tablet */
+@media (max-width: 780px){
+  .brand-title-img{
+    height: 65px;
+  }
+
+  .top-icons{
+    width: 150px;
+  }
+
+  .location-img{
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* 📱 Móvil */
+@media (max-width: 420px){
+  .brand-title-img{
+    height: 55px;
+  }
+
+  .top-icons{
+    width: 130px;
+  }
+
+  .location-img{
+    width: 24px;
+    height: 24px;
+  }
+}
+
+
+
+/* ====== FIX: Texto del modal siempre negro ====== */
+#modalTitle,
+#modalPrice,
+#modalDesc,
+#modal .p-title,
+#modal h2,
+#modal h3,
+#modal p {
+  color: #000 !important;
+  opacity: 1 !important;
+}
+
+
+
+
+
+
+/* ============================================
+   🛒 PANEL CARRITO – ESTILO PREMIUM PRO MAX
+   ============================================ */
+
+/* Contenedor del item */
+.panel-item {
+  display: flex;
+  gap: 14px;
+  padding: 16px;
+  margin-bottom: 14px;
+
+  background: #ffffff;           /* 🔥 Fondo blanco sólido */
+  border-radius: 16px;
+
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);   /* 🔥 sombra estilo Apple */
+
+  animation: cartFade 0.35s ease;
+  position: relative;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.panel-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+}
+
+/* Animación suave */
+@keyframes cartFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Imagen del producto */
+.panel-item img {
+  width: 75px;
+  height: 75px;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+/* Contenedor de texto */
+.panel-item .info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Título */
+.panel-item .info strong {
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 4px;
+  color: #222;
+}
+
+/* Precio unitario */
+.panel-item .info small {
+  font-size: 13px;
+  color: #666;
+}
+
+/* ============================================
+   🔢 CONTADOR – DISEÑO REDONDO, MODERNO
+   ============================================ */
+.qty-controls {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.qty-controls button.dec,
+.qty-controls button.inc {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+
+  background: linear-gradient(135deg, #ff5b5b, #d62828);
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.qty-controls button.dec:hover,
+.qty-controls button.inc:hover {
+  transform: scale(1.12);
+  background: linear-gradient(135deg, #ff7777, #e03535);
+}
+
+.qty-controls span {
+  min-width: 28px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 800;
+  color: #222;
+}
+
+/* Precio total del producto */
+.item-total-btn {
+  background: #ffe5e5;
+  padding: 6px 14px;
+  border-radius: 12px;
+
+  color: #d62828;
+  font-weight: 800;
+  border: none;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+/* ============================================
+   ❌ BOTÓN ELIMINAR – ELEGANTE
+   ============================================ */
+.remove-btn-cart {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: linear-gradient(145deg, #ff3b3b, #ba0000);
+  color: #fff;
+
+  font-size: 18px;
+  cursor: pointer;
+
+  box-shadow: 0 6px 16px rgba(255,0,0,0.25);
+  transition: 0.2s ease;
+}
+
+.remove-btn-cart:hover {
+  transform: scale(1.15);
+  background: linear-gradient(145deg, #ff5b5b, #d00000);
+}
+
+
+
+
+
+
+
+/* ============================================
+   🔥 FIX PRECIOS NEGROS (CARRITO)
+   ============================================ */
+
+/* Todos los textos dentro de .panel-item */
+.panel-item span,
+.panel-item strong,
+.panel-item small,
+.panel-item div {
+  color: #111 !important;
+}
+
+/* Precio unitario, total por item y cantidad */
+.panel-item .info span,
+.panel-item .info *,
+.qty-controls span {
+  color: #111 !important;
+}
+
+/* Precio total por producto */
+.item-total-btn {
+  color: #111 !important;
+  background: #ffe8e8 !important;
+}
+
+/* Totales del panel */
+.panel-footer span,
+.panel-footer div,
+.panel-footer * {
+  color: #111 !important;
+}
+
+/* Título "Total:" */
+.panel-footer b,
+.panel-footer strong {
+  color: #111 !important;
+}
+
+/* ============================================
+   ❗ EXCEPCIÓN → Mantener “Finalizar compra” en BLANCO
+   ============================================ */
+.checkout-btn,
+.checkout-btn * {
+  color: #fff !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---- ESTILO PREMIUM PARA SUGERENCIAS (SIN TRANSPARENCIA) ---- */
+#suggestions{
+  position:absolute;
+  background:#ffffff;                /* Fondo sólido */
+  backdrop-filter:none !important;   /* Sin blur */
+  -webkit-backdrop-filter:none !important;
+  
+  border-radius:14px;
+  border:1px solid rgba(0,0,0,0.10);
+  box-shadow:0 10px 35px rgba(0,0,0,0.18);
+  
+  width:100%;
+  left:0;
+  top:calc(100% + 6px);
+  z-index:999;
+  overflow:hidden;
+  display:none;
+
+  color:#000 !important;            /* Texto negro */
+}
+
+/* Cada sugerencia */
+.suggestion-item{
+  padding:12px 16px;
+  font-size:15px;
+  cursor:pointer;
+  transition:background 0.15s ease, transform 0.15s ease;
+  color:#000 !important;            /* Texto negro siempre */
+}
+
+/* Hover estilo Apple */
+.suggestion-item:hover{
+  background:#f2f2f2 !important;
+  transform:translateX(4px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===================== PRECIO MODAL PRODUCTO FINAL ===================== */
+
+.modal-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:600;
+}
+
+/* 🔥 CONTENEDOR */
+.modal{
+  width:100%;
+  max-width:480px;
+
+  background:#fff;
+  border-radius:18px;
+  padding:18px;
+
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+
+  box-shadow:0 25px 70px rgba(0,0,0,0.35);
+
+  animation:modalFade .3s ease;
+
+  height:auto;
+  max-height:90vh;
+}
+
+/* 🔥 FILA SUPERIOR */
+.modal-top{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+/* ===================== IMAGEN ===================== */
+.modal-top .thumb{
+  width:min(55%, 260px);
+  position:relative;
+  flex-shrink:0;
+}
+
+.modal-top img{
+  width:100%;
+  height:auto;
+
+  /* 🔥 RESPONSIVE REAL */
+  max-height:min(42vw, 340px);
+
+  object-fit:contain;
+
+  border-radius:14px;
+  background:#f6f6f6;
+  padding:10px;
+}
+
+
+/* 🔥 BADGE DESCUENTO (GLOBAL BASE) */
+.discount-badge{
+  position:absolute;
+  top:6px;
+  left:6px;
+
+  background: linear-gradient(135deg, #ff2e2e, #ff6a00);
+  color:#fff;
+
+  font-size:14px;
+  font-weight:900;
+
+  padding:5px 9px;
+  border-radius:999px;
+
+  box-shadow:0 6px 18px rgba(255,0,0,0.35);
+
+  transform: rotate(-8deg);
+  z-index:2;
+}
+
+/* 🔥 AJUSTE ESPECÍFICO PARA EL MODAL */
+#modalBadge{
+  position:absolute;
+  top:10px;
+  left:10px;
+
+  font-size:16px;
+  padding:6px 12px;
+
+  z-index:5; /* 👈 para que esté encima de la imagen */
+}
+
+
+
+
+/* 🔥 INFO DERECHA */
+.modal-info{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+/* TÍTULO */
+.modal-info h3{
+  font-size:14px;
+  font-weight:900;
+  color:#111;
+  line-height:1.2;
+}
+
+/* ===================== PRECIOS CONTROL INDIVIDUAL ===================== */
+
+.price-box{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  align-items:flex-start;
+}
+
+/* FILA */
+.price-line{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+/* TEXTO GENERAL */
+.price-label{
+  font-size:11px;
+  font-weight:700;
+}
+
+/* ===================== ANTES ===================== */
+.price-line.old .price-value{
+  font-size:17px;
+  font-weight:800;          /* 🔥 MÁS GRUESO */
+  color:#666;
+  text-decoration:line-through;
+}
+
+.price-line.old .price-label{
+  font-size:10px;
+  font-weight:700;
+  color:#666;
+}
+
+/* ===================== AHORA ===================== */
+.price-line.now .price-value{
+  font-size:25px;
+  font-weight:900;          /* 🔥 SUPER GRUESO */
+  color:#ff2e2e;
+}
+
+.price-line.now .price-label{
+  font-size:10px;
+  font-weight:1000;
+  color:#ff2e2e;
+}
+
+/* ===================== AHORRAS ===================== */
+.price-line.save{
+  background:#e9f8ee;
+  padding:4px 8px;
+  border-radius:8px;
+  width:fit-content;
+}
+
+.price-line.save .price-value{
+  font-size:12px;
+  font-weight:900;          /* 🔥 GRUESO */
+  color:#0a7d2c;
+}
+
+.price-line.save .price-label{
+  font-size:10px;
+  font-weight:800;
+  color:#0a7d2c;
+}
+
+
+
+
+
+/* ===================== ANIMACIÓN PRECIO ===================== */
+
+@keyframes pricePop{
+  0%{
+    transform:scale(0.6);
+    opacity:0;
+  }
+  60%{
+    transform:scale(2.15);
+    opacity:1;
+  }
+  100%{
+    transform:scale(1);
+  }
+}
+
+/* SOLO PRECIO ACTUAL */
+.price-line.now .price-value{
+  animation:pricePop 0.45s ease;
+}
+
+
+
+@keyframes modalEnter{
+  0%{
+    transform:scale(0.9) translateY(20px);
+    opacity:0;
+  }
+  100%{
+    transform:scale(1) translateY(0);
+    opacity:1;
+  }
+}
+
+.modal{
+  animation:modalEnter 0.35s cubic-bezier(.2,.8,.2,1);
+}
+
+
+@keyframes imageFloat{
+  0%{ transform:translateY(0px); }
+  50%{ transform:translateY(-6px); }
+  100%{ transform:translateY(0px); }
+}
+
+.modal-top img{
+  animation:imageFloat 3s ease-in-out infinite;
+}
+
+
+@keyframes pricePop{
+  0%{ transform:scale(0.8); opacity:0; }
+  60%{ transform:scale(1.15); }
+  100%{ transform:scale(1); opacity:1; }
+}
+
+.price-line.now .price-value{
+  animation:pricePop 0.4s ease, priceGlow 0.6s ease;
+}
+
+
+@keyframes saveFade{
+  0%{ opacity:0; transform:translateY(6px); }
+  100%{ opacity:1; transform:translateY(0); }
+}
+
+.price-line.save{
+  animation:saveFade 2.0s ease;
+}
+
+
+@keyframes badgePop{
+  0%{ transform:scale(0); }
+  80%{ transform:scale(1.2); }
+  100%{ transform:scale(1); }
+}
+
+.discount-badge{
+  animation:badgePop 0.4s ease;
+}
+
+
+
+
+
+/* 🔥 DESCRIPCIÓN (SCROLL SOLO AQUÍ) */
+.modal-desc{
+  max-height:120px;
+  overflow-y:auto;
+}
+
+.modal-desc p{
+  font-size:13px;
+  color:#444;
+  line-height:1.5;
+}
+
+/* SCROLL BONITO */
+.modal-desc::-webkit-scrollbar{
+  width:5px;
+}
+
+.modal-desc::-webkit-scrollbar-thumb{
+  background:rgba(0,0,0,0.25);
+  border-radius:10px;
+}
+
+/* 🔥 BOTONES EN FILA */
+.modal-actions{
+  display:flex;
+  gap:10px;
+}
+
+/* BOTONES BASE */
+.btn-add-modal,
+.btn-close-modal{
+  flex:1;
+  border:none;
+  border-radius:12px;
+  padding:12px;
+  font-weight:900;
+  cursor:pointer;
+  transition:all 0.2s ease;
+}
+
+/* 🟣 AÑADIR (GRADIENTE MORADO) */
+.btn-add-modal{
+  background: linear-gradient(135deg, #7b2cbf, #9d4edd);
+  color:#fff;
+  box-shadow: 0 6px 18px rgba(123, 47, 247, 0.35);
+}
+
+/* ✨ HOVER CORRECTO (MISMO ESTILO, MÁS INTENSO) */
+.btn-add-modal:hover{
+  background: linear-gradient(135deg, #6920e6, #9337e6);
+  transform: scale(1.03);
+  box-shadow: 0 10px 24px rgba(123, 47, 247, 0.45);
+}
+
+/* 🔴 CERRAR */
+.btn-close-modal{
+  background:#ff3b30;
+  color:#fff;
+}
+
+.btn-close-modal:hover{
+  background:#e12f25;
+}
+
+/* 🔥 ANIMACIÓN */
+@keyframes modalFade{
+  from{
+    transform:scale(0.92);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+
+
+
+/* ===================== Overlay ===================== */
+#overlay{
+  position:fixed;
+  inset:0;
+  background:var(--overlay);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .25s ease;
+  z-index:550;
+}
+
+/* ===================== Mini-cart rectangle (modified to purple) ===================== */
+/* It keeps glass blur, but background hue is purple to match the footer */
+.cart-float{
+  position:fixed;
+  bottom:12px;
+  right:12px;
+  width:var(--panel-width);
+  max-width:420px;
+  background: linear-gradient(180deg, rgba(91,44,111,0.20), rgba(91,44,111,0.14));
+  border-radius:18px;
+  padding:2px 14px;           /* ← ESTO ES LO QUE HACE EL RECTÁNGULO MUY ALTO */
+  display:none;
+  align-items:center;
+  gap:12px;
+  z-index:600;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 14px 40px rgba(91,44,111,0.14);
+  border: 1px solid rgba(255,255,255,0.06);
+  color:#fff;
+}
+
+/* Cart icon inside rectangle: colored darker purple */
+.cart-float .mini-cart-icon{
+  width:40px;
+height:40px;
+border-radius:10px;
+display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);
+  color:var(--purple);font-size:20px;font-weight:700;margin-right:6px;
+  border:1px solid rgba(255,255,255,0.06);
+}
+/* left area for mini thumbs */
+.cart-float-left{display:flex;gap:8px;overflow-x:auto;align-items:center;max-width:62%;}
+
+
+
+
+
+
+.thumb-mini {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  overflow: visible !important;      /* permite que el contador salga por arriba */
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: rgba(255,255,255,0.03);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* imagen de la miniatura (NO LO BORRES) */
+.thumb-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* 🔥 CONTADOR ELEGANTE, REDONDO Y MÁS GRANDE */
+.thumb-mini .qty-badge {
+  position: absolute;
+  top: -14px;                        /* posición estética */
+  right: -6px;                       /* alineado en esquina derecha */
+  background: #ff0059;
+  color: #fff;
+  font-size: 12px;                   /* un poquito más grande */
+  font-weight: 800;
+  width: 22px;                       /* tamaño redondo */
+  height: 22px;
+  border-radius: 50%;                /* 👈 completamente redondo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.35);
+  border: 2px solid rgba(255,255,255,0.8); /* borde elegante */
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* contenedor de la parte derecha del mini-cart */
+.cart-float-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+}
+
+.cart-float .mini-open-hint {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+
+
+
+
+/* ===================== Panels (cart) ===================== */
+.panel-base{
+  position: fixed;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.98));
+  box-shadow: 0 30px 80px rgba(8,8,10,0.18);
+  z-index:610;
+  display:flex;
+  flex-direction:column;
+  border-left:1px solid rgba(0,0,0,0.04);
+  border-top-left-radius:16px;
+  transition: transform .35s cubic-bezier(.2,.9,.2,1), bottom .35s ease;
+  bottom:0;
+}
+
+/* PANEL BASE CERRADO */
+.panel-base:not(.active):not(.side-active){
+  transform: translateY(500%) !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  bottom: 0 !important;
+}
+
+/* PANEL ABIERTO */
+.panel-base.active,
+.panel-base.side-active{
+  transform: translateY(0%) !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  bottom: 12px !important;
+}
+
+/* ===================== PANEL INFERIOR ===================== */
+.panel-bottom{
+   left:12px;
+   right:12px;
+   bottom:12px !important;
+   height:var(--panel-height-mobile);
+   transform:translateY(110%);
+   border-radius:16px;
+   overflow:hidden;
+   transition:transform .35s cubic-bezier(.2,.9,.2,1);
+}
+
+.panel-bottom.active{
+  transform:translateY(0%) !important;
+  bottom:12px !important;
+}
+
+/* ===================== PANEL LATERAL ===================== */
+.panel-side{
+  top:12px;
+  bottom:12px !important;
+  right:12px;
+  width:var(--panel-width);
+
+  background:#ffffff !important;
+
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+
+  box-shadow:0 12px 35px rgba(0,0,0,0.15);
+  border-radius:16px;
+
+  transform:translateX(110%);
+  transition:transform .35s cubic-bezier(.2,.9,.2,1);
+}
+
+.panel-side.side-active{
+  transform:translateX(0%);
+}
+
+/* ===================== CONTENIDO ===================== */
+.panel-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px;
+  background:#ffffff;
+  border-bottom:1px solid rgba(0,0,0,0.08);
+  color:#111 !important;
+}
+
+.panel-list{
+  overflow:auto;
+  padding:14px;
+  flex:1;
+  background:#ffffff;
+}
+
+/* 🔥 SOLO CARRITO (antes decía carrito / favoritos) */
+.panel-item{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  padding:14px;
+  margin-bottom:14px;
+  background:#ffffff;
+  border-radius:14px;
+  border:1px solid rgba(0,0,0,0.06);
+  box-shadow:0 6px 20px rgba(0,0,0,0.10);
+  position:relative;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.panel-item:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 26px rgba(0,0,0,0.18);
+}
+
+.panel-item img{
+  width:72px;
+  height:72px;
+  object-fit:cover;
+  border-radius:12px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.10);
+}
+
+/* Botón eliminar */
+.remove-btn{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:#ff3b30;
+  color:#fff;
+  border:0;
+  width:28px;
+  height:28px;
+  font-size:16px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 12px rgba(255,0,0,0.25);
+  cursor:pointer;
+}
+
+/* ===================== Cantidad ===================== */
+.qty-controls{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-top:8px;
+}
+
+.qty-controls button{
+  background:var(--accent);
+  color:#fff;
+  border:0;
+  border-radius:10px;
+  padding:6px 12px;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 4px 10px rgba(211,47,47,0.25);
+}
+
+/* ===================== Footer ===================== */
+.panel-footer{
+  padding:16px;
+  border-top:1px solid rgba(0,0,0,0.03);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,1));
+}
+
+.checkout-btn{
+  background:#7b2fff;
+  color:white;
+  font-weight:900;
+  font-size:16px;
+  padding:16px;
+  border-radius:40px;
+  border:0;
+  cursor:pointer;
+  text-shadow:0 0 6px #fff;
+  background-image:linear-gradient(45deg,#ff00ff,#ff0066,#ff3b00,#ffcc00,#00ff9d);
+  box-shadow:0 0 12px #7b2fff,0 0 28px #7b2fff;
+  transition:.25s ease;
+}
+
+.checkout-btn:hover{
+  box-shadow:0 0 20px #a76dff,0 0 40px #a76dff;
+  transform:translateY(-3px);
+}
+
+/* ===================== TOAST ===================== */
+.toast{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:40px;
+  background:rgba(0,0,0,0.75);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:8px;
+  opacity:0;
+  transition:opacity .25s ease;
+  z-index:650;
+}
+
+/* ===================== Footer NUEVO ===================== */
+.footer-final {
+  width:100%;background:linear-gradient(180deg, rgba(91,44,111,0.95), rgba(91,44,111,0.95));color:#fff;padding:20px 16px;margin-top:40px;text-align:center;box-shadow:0 -6px 30px rgba(91,44,111,0.18);font-size:14px;}
+.footer-final small{display:block;margin-top:4px;opacity:0.9;font-size:12px;}
+
+/* Footer appears fixed near the bottom, centered, thin, rounded and glass-like */
+.footer-float{
+  position:fixed;left:50%;transform:translateX(-50%);bottom:12px;
+  width:calc(100% - 32px);max-width:1100px;height:56px;border-radius:12px;
+  background: linear-gradient(180deg, rgba(91,44,111,0.95), rgba(91,44,111,0.95));
+  box-shadow: 0 18px 50px rgba(91,44,111,0.18);
+  color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 16px;z-index:700;
+  backdrop-filter: blur(6px);-webkit-backdrop-filter:blur(6px);
+  font-size:12px;
+}
+.footer-float small{opacity:0.95;font-size:11px;color:rgba(255,255,255,0.9);}
+
+@media (max-width:900px){
+
+  .cart-float{
+    left:12px;
+    right:12px;
+    width:calc(100% - 24px);
+    max-width:none;
+    bottom:12px !important;    
+    border-radius:16px;
+  }
+
+  .panel-bottom{
+    bottom:60px;
+    height:var(--panel-height-mobile);
+    transform:translateY(110%);
+  }
+
+  .panel-side{
+    top:12px;
+    right:12px;
+    bottom:60px;
+  }
+
+  .footer-float{
+    bottom:8px;
+    height:64px;
+  }
+}
+
+/* ==== FIX DEFINITIVO PARA QUE .cart-float SE QUEDE A LA DERECHA EN PC ==== */
+@media (min-width:901px){
+  .cart-float{
+    left: auto !important;
+    right: 12px !important;
+    width: var(--panel-width) !important;
+    max-width: 420px !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===================== ZOOM BUTTONS PREMIUM ===================== */
+
+/* 🔥 BOTÓN + MODAL Y CARD */
+.zoom-btn,
+.card-zoom-btn{
+
+  position:absolute;
+
+  /* 🔥 MÁS ARRIBA Y MÁS DERECHA */
+  top:6px;
+  right:6px;
+
+  width:36px;
+  height:36px;
+
+  border:none;
+  border-radius:50%;
+
+  /* 🔥 MORADO MÁS OSCURO */
+  background:rgba(83, 20, 140, 0.52);
+
+  color:#f4ecff;
+
+  font-size:24px;
+  font-weight:900;
+
+  cursor:pointer;
+
+  z-index:10;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  /* 🔥 EFECTO GLASS */
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+
+  border:1px solid rgba(180,120,255,0.20);
+
+  box-shadow:
+    0 6px 18px rgba(83,20,140,0.34),
+    inset 0 1px 1px rgba(255,255,255,0.08);
+
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    background .22s ease,
+    filter .22s ease;
+}
+
+/* 🔥 BOTÓN CARD MÁS PEQUEÑO */
+.card-zoom-btn{
+
+  top:4px;
+  right:4px;
+
+  width:30px;
+  height:30px;
+
+  font-size:21px;
+
+  z-index:8;
+}
+
+/* 🔥 HOVER */
+.zoom-btn:hover,
+.card-zoom-btn:hover{
+
+  background:rgba(101, 26, 168, 0.72);
+
+  transform:scale(1.10);
+
+  box-shadow:
+    0 10px 24px rgba(83,20,140,0.42),
+    0 0 14px rgba(180,120,255,0.16);
+
+  filter:brightness(1.08);
+}
+
+/* 🔥 CLICK */
+.zoom-btn:active,
+.card-zoom-btn:active{
+  transform:scale(.95);
+}
+
+
+
+
+
+
+
+/* ===================== IMAGE VIEWER PREMIUM ===================== */
+
+.image-viewer{
+  position:fixed;
+  inset:0;
+
+  background:
+  radial-gradient(
+    circle at top,
+    rgba(50,20,80,0.80),
+    rgba(10,10,16,0.88)
+  );
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  z-index:9999;
+
+  padding:20px;
+
+  animation:viewerFade .28s ease;
+}
+
+/* ===================== IMAGEN GRANDE PREMIUM ===================== */
+.image-viewer img{
+
+  max-width:95%;
+  max-height:92vh;
+
+  object-fit:contain;
+
+  border-radius:28px;
+
+  /* 🔥 ESPACIO DEL BORDE */
+  padding:10px;
+
+  /* 🔥 BORDE GRADIENTE */
+  border:3px solid transparent;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4b0082,
+      #8334C6,
+      #a855f7,
+      #c084fc,
+      #6d28d9,
+      #4b0082
+    ) border-box;
+
+  background-clip:border-box;
+
+  /* 🔥 GLOW PREMIUM */
+  box-shadow:
+    0 0 12px rgba(131,52,198,.45),
+    0 0 26px rgba(168,85,247,.28),
+    0 0 60px rgba(109,40,217,.20),
+    0 25px 70px rgba(0,0,0,.72);
+
+  animation:zoomIn .28s ease;
+}/* ===================== BOTÓN MENOS / CERRAR ===================== */
+
+.close-viewer{
+
+  position:absolute;
+
+  /* 🔥 MÁS ARRIBA Y DERECHA */
+  top:14px;
+  right:14px;
+
+  width:46px;
+  height:46px;
+
+  border:none;
+  border-radius:50%;
+
+  /* 🔥 MORADO OSCURO */
+  background:rgba(83, 20, 140, 0.55);
+
+  color:#f4ecff;
+
+  font-size:30px;
+  font-weight:900;
+
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+
+  border:1px solid rgba(190,140,255,0.20);
+
+  box-shadow:
+    0 8px 24px rgba(83,20,140,0.34);
+
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    background .22s ease;
+}
+
+/* 🔥 HOVER */
+.close-viewer:hover{
+
+  background:rgba(101, 26, 168, 0.74);
+
+  transform:scale(1.10);
+
+  box-shadow:
+    0 12px 28px rgba(83,20,140,0.42),
+    0 0 16px rgba(180,120,255,0.18);
+}
+
+/* 🔥 CLICK */
+.close-viewer:active{
+  transform:scale(.95);
+}
+
+/* ===================== ANIMACIONES ===================== */
+
+@keyframes viewerFade{
+  from{
+    opacity:0;
+  }
+  to{
+    opacity:1;
+  }
+}
+
+@keyframes zoomIn{
+  from{
+    opacity:0;
+    transform:scale(.88);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header>
+  <div class="header-top">
+
+    <!-- 🔥 LOGO CLICKEABLE -->
+    <a href="index.html" class="brand">
+      <img class="brand-title-img"
+           src="https://i.postimg.cc/fRt1c6ff/logo.png"
+           alt="Ruta de Gracia Logo">
+    </a>
+
+    <!-- Icons top-right -->
+    <div class="top-icons">
+
+      <!-- LOCATION ICON -->
+      <a href="https://maps.app.goo.gl/ysVSmVTo2d8sivQa7"
+         target="_blank"
+         class="location-icon"
+         title="Ubicación">
+        <img src="https://i.postimg.cc/h4b8Nfhx/mapa.png"
+             class="location-img"
+             alt="Mapa">
+      </a>
+
+      <!-- 📞 WHATSAPP -->
+      <a href="https://api.whatsapp.com/send?phone=593980156049"
+         target="_blank"
+         class="icon-btn"
+         title="WhatsApp">
+        📞
+      </a>
+
+      <!-- 🛒 CART -->
+      <button id="cartIconTop"
+              class="icon-btn"
+              title="Carrito">
+        🛒
+        <span id="cartTopCount" class="count-badge">0</span>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+
+
+
+  <!-- SEARCH + CATEGORIES ROW -->
+  <div class="header-bottom">
+
+    <div class="search-wrap">
+
+      <!-- Botón de categorías -->
+      <button class="cat-btn" id="catBtn">☰ Categorías</button>
+
+      <!-- Dropdown de categorías (vertical + scroll interno) -->
+      <div id="catDropdown" class="cat-dropdown" aria-hidden="true">
+        <div class="item" data-filter="all">🏠 <span>Todos</span></div>
+        <div class="item" data-filter="intercom">📞 <span>Intercomunicador</span></div>
+        <div class="item" data-filter="headsets">🎧 <span>Audífonos Bluetooth</span></div>
+        <div class="item" data-filter="cascos">👤 <span>Cascos</span></div>
+        <div class="item" data-filter="helmet">🪖 <span>Accesorios para casco</span></div>
+        <div class="item" data-filter="body">✨ <span>Estética y Carrocería</span></div>
+        <div class="item" data-filter="moto">🛵 <span>Accesorios y decoración moto</span></div>
+        <div class="item" data-filter="security">🔒 <span>Seguridad Moto</span></div>
+        <div class="item" data-filter="lights">💡 <span>Iluminación para Moto</span></div>
+        <div class="item" data-filter="phone">📱 <span>Soportes para Grabar</span></div>
+        <div class="item" data-filter="carplay">📳 <span>Carplay</span></div>
+        <div class="item" data-filter="clothes">👕 <span>Indumentaria</span></div>
+        <div class="item" data-filter="electronics">🔌 <span>Electrónica</span></div>
+        <div class="item" data-filter="home">🏡 <span>Hogar y varios</span></div>
+        <div class="item" data-filter="woman">👩 <span>Mujer</span></div>
+      </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const btnCats = document.getElementById('catBtn');
+  const dropCats = document.getElementById('catDropdown');
+
+  /* === DROPDOWN === */
+  btnCats.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropCats.classList.toggle('show');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!dropCats.contains(e.target) && !btnCats.contains(e.target)) {
+      dropCats.classList.remove('show');
+    }
+  });
+
+  document.querySelectorAll('#catDropdown .item').forEach(item => {
+    item.addEventListener('click', () => {
+      dropCats.classList.remove('show');
+    });
+  });
+
+  /* =========================================================
+     🔥 FIX REAL BUSCADOR
+     ========================================================= */
+
+  const inputSearch = document.getElementById('q');
+
+  /* 👇 IMPORTANTE: usamos getElementById por si querySelector falla */
+  const featuredSection = document.querySelector('.featured-window');
+
+  if(!inputSearch){
+    console.log("❌ No se encontró el input #q");
+    return;
+  }
+
+  if(!featuredSection){
+    console.log("❌ No se encontró .featured-window");
+  }
+
+  function toggleFeatured(show){
+    if(featuredSection){
+      featuredSection.style.display = show ? '' : 'none';
+    }
+  }
+
+  /* ===== ESCUCHAR ESCRITURA ===== */
+  inputSearch.addEventListener('input', function(){
+    const value = this.value.trim();
+
+    console.log("Buscando:", value); // 👈 para verificar
+
+    if(value.length > 0){
+      toggleFeatured(false);
+    } else {
+      toggleFeatured(true);
+    }
+  });
+
+/* ===== CLICK EN CATEGORÍAS ===== */
+document.querySelectorAll('[data-filter]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    inputSearch.value = '';
+
+    const filter = btn.dataset.filter;
+
+    if(filter === "all"){
+      toggleFeatured(true);  // 🏠 mostrar destacados
+    } else {
+      toggleFeatured(false); // 📂 ocultar destacados
+    }
+  });
+});
+
+});
+</script>
+
+      <!-- Buscador -->
+      <div class="search" style="flex:1;">
+        <input id="q" placeholder="Buscar producto..." autocomplete="off" />
+        <button id="btnSearch" class="search-btn">Buscar</button>
+        <div id="suggestions"></div>
+      </div>
+    </div>
+
+    <!-- Categorías móviles -->
+    <div class="mobile-categories" id="mobileCategories" style="display:none">
+      <div class="category-item active" data-filter="all">🏠</div>
+      <div class="category-item" data-filter="intercom">📞 Intercomunicador</div>
+      <div class="category-item" data-filter="headsets">🎧 Audífonos Bluetooth</div>
+      <div class="category-item" data-filter="cascos">👤 Cascos</div>
+      <div class="category-item" data-filter="helmet">🪖 Accesorios para casco</div>
+      <div class="category-item" data-filter="body">✨ Estética y Carrocería</div>
+      <div class="category-item" data-filter="moto">🛵 Accesorios y decoración moto</div>
+      <div class="category-item" data-filter="security">🔒 Seguridad Moto</div>
+      <div class="category-item" data-filter="lights">💡 Iluminación para Moto</div>
+      <div class="category-item" data-filter="phone">📱 Soportes para Grabar</div>
+      <div class="category-item" data-filter="carplay">📳 Carplay</div>
+      <div class="category-item" data-filter="clothes">👕 Indumentaria</div>
+      <div class="category-item" data-filter="electronics">🔌 Electrónica</div>
+      <div class="category-item" data-filter="home">🏡 Hogar y varios</div>
+      <div class="category-item" data-filter="woman">👩 Mujer</div>
+    </div>
+
+  </div>
+</header>
+
+<!-- BARRA DE CATEGORÍAS DESKTOP -->
+<div class="category-bar">
+
+  <!-- Indicador premium (glow mientras haces scroll) -->
+  <div class="scroll-indicator"></div>
+
+  <div class="categories">
+
+    <div class="category-item" data-filter="all">🏠</div>
+    <div class="category-item" data-filter="intercom">📞 Intercomunicador</div>
+    <div class="category-item" data-filter="headsets">🎧 Audífonos Bluetooth</div> 
+    <div class="category-item" data-filter="cascos">👤 Cascos</div>
+    <div class="category-item" data-filter="helmet">🪖 Accesorios para casco</div>
+    <div class="category-item" data-filter="body">✨ Estética y Carrocería</div>
+    <div class="category-item" data-filter="moto">🛵 Accesorios y decoración moto</div>
+    <div class="category-item" data-filter="security">🔒 Seguridad Moto</div>
+    <div class="category-item" data-filter="lights">💡 Iluminación para Moto</div>
+    <div class="category-item" data-filter="phone">📱 Soportes para Grabar</div>
+    <div class="category-item" data-filter="carplay">📳 Carplay</div>
+    <div class="category-item" data-filter="clothes">👕 Indumentaria</div>
+    <div class="category-item" data-filter="electronics">🔌 Electrónica</div>
+    <div class="category-item" data-filter="home">🏡 Hogar y varios</div>
+    <div class="category-item" data-filter="woman">👩 Mujer</div>
+
+  </div> <!-- ✔ cierre de .categories -->
+
+</div> <!-- ⚠️ CIERRE CORRECTO DE .category-bar (ANTES FALTABA ESTE) -->
+
+
+<!-- 🎉 SECCIÓN 100% INDEPENDIENTE -->
+<section class="featured-window">
+  <h2 class="featured-title">🔥 Productos más vendidos</h2>
+
+  <div class="featured-list" id="featuredList"></div>
+</section>
+
+
+
+
+</div>
+
+
+
+<!-- ===================== MAIN GRID ===================== -->
+<main class="container">
+  <div class="grid" id="grid"></div>
+</main>
+
+<!-- ===================== PRODUCT MODAL ===================== -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal" role="dialog" aria-modal="true">
+
+    <!-- 🔥 FILA SUPERIOR -->
+    <div class="modal-top">
+
+      <!-- ===================== IMAGEN + BADGE ===================== -->
+      <div class="thumb" id="modalImg">
+
+        <!-- 🔥 BOTÓN ZOOM -->
+        <button class="zoom-btn" id="zoomBtn">+</button>
+
+        <!-- BADGE -->
+        <span class="discount-badge" id="modalBadge"></span>
+
+        <!-- IMAGEN -->
+        <img src="" alt="">
+
+      </div>
+
+      <!-- ===================== INFO DERECHA ===================== -->
+      <div class="modal-info">
+
+        <!-- TÍTULO -->
+        <h3 id="modalTitle"></h3>
+
+        <!-- PRECIOS -->
+        <div class="price-box" id="modalPrice"></div>
+
+      </div>
+
+    </div>
+
+    <!-- ===================== DESCRIPCIÓN ===================== -->
+    <div class="modal-desc">
+      <p id="modalDesc"></p>
+    </div>
+
+    <!-- ===================== BOTONES ===================== -->
+    <div class="modal-actions">
+      <button id="buyNow" class="btn-add-modal">
+        Añadir al carrito
+      </button>
+
+      <button class="btn-close-modal">
+        Cerrar
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== IMAGE VIEWER ===================== -->
+<div class="image-viewer" id="imageViewer">
+
+  <!-- 🔥 BOTÓN CERRAR -->
+  <button class="close-viewer" id="closeViewer">−</button>
+
+  <!-- 🔥 IMAGEN GRANDE -->
+  <img id="viewerImg" src="" alt="">
+
+</div>
+
+<div id="overlay" aria-hidden="true"></div>
+<!-- ===================== MINI CART RECTANGLE (purple glass) ===================== -->
+<div class="cart-float" id="cartFloat" aria-hidden="true">
+
+  <!-- ===================== LEFT: MINIATURAS ===================== -->
+  <div class="cart-float-left" id="cartMiniItems">
+    <!-- EJEMPLO de miniaturas (tu JS puede seguir inyectando lo mismo) -->
+    <!-- Mantén esta estructura: .cart-mini-thumb contiene imagen, y .cart-mini-thumb-qty está encima -->
+    <div class="cart-mini-thumb">
+      <span class="cart-mini-thumb-qty">2</span>
+      <img src="https://via.placeholder.com/42" alt="producto">
+    </div>
+
+    <div class="cart-mini-thumb">
+      <span class="cart-mini-thumb-qty">1</span>
+      <img src="https://via.placeholder.com/42" alt="producto">
+    </div>
+
+    <!-- más miniaturas... -->
+  </div>
+
+  <!-- ===================== CENTER: (VACÍO PARA NO MOVER DISEÑO) ===================== -->
+  <div class="cart-float-center"></div>
+
+  <!-- ===================== RIGHT: TOTAL + ICONO ===================== -->
+  <div class="cart-float-right">
+      <!-- TOTAL (FIJO A LA IZQUIERDA DEL ICONO) -->
+      <div class="mini-total-zone">
+        <div class="mini-total" id="cartMiniTotal" style="color:#fff;">$0.00</div>
+        <div class="mini-open-hint" style="color:rgba(255,255,255,0.9)">Toca para ver</div>
+      </div>
+
+      <!-- ICONO DEL CARRITO -->
+      <div class="cart-icon-wrapper">
+          <div class="mini-cart-icon" aria-hidden="true">🛒</div>
+
+          <!-- contador general arriba a la derecha -->
+          <span id="cartCount" class="count-badge cart-count-floating">0</span>
+      </div>
+  </div>
+</div>
+
+
+<style>
+/* ================================= GLASS + LAYOUT ================================ */
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===================== MINIATURAS ===================== */
+/* permitimos que el contador sobresalga sin cortarlo; dejamos scroll horizontal */
+.cart-float-left {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  overflow-x: auto;
+  overflow-y: visible;
+  max-width: 55%;
+  padding-bottom: 4px;
+  padding-top: 12px;
+  padding-left: 6px;              /* ⭐ AGREGADO → mueve miniaturas y evita corte */
+}
+
+
+.cart-float-left::-webkit-scrollbar {
+  display: none;
+}
+
+/* cada miniatura */
+.cart-mini-thumb {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  overflow: visible;
+  border: 2px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.03);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* imagen dentro de la miniatura */
+.cart-mini-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+
+/* ===================== TOTAL A LA IZQUIERDA DEL ICONO ===================== */
+.cart-float-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.mini-total-zone {
+  text-align: right;
+  min-width: 120px;
+}
+
+.mini-total {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.mini-open-hint {
+  font-size: 13px;
+}
+
+/* ===================== ICONO DERECHA ===================== */
+.cart-icon-wrapper {
+  position: relative;
+}
+
+.mini-cart-icon {
+  font-size: 32px;
+}
+
+/* contador general arriba a la derecha */
+.cart-count-floating {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #ff0059;
+  padding: 4px 7px;
+  font-size: 12px;
+  border-radius: 16px;
+  font-weight: 700;
+  color: #fff;
+  z-index: 1200;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+@media (max-width: 480px) {
+  .cart-float { padding: 2px 10px; border-radius:14px; }
+  .cart-mini-thumb { width: 38px; height:38px; }
+  .mini-cart-icon { font-size:28px; }
+  .mini-total { font-size:16px; }
+  .mini-total-zone { min-width: 90px; }
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===================== CART PANEL ===================== -->
+<div id="cartPanel" class="panel-base panel-bottom" aria-hidden="true">
+  <div class="panel-header">
+    <h2>Carrito</h2>
+    <button id="closeCart" class="close" aria-label="Cerrar carrito">✕</button>
+  </div>
+  <div class="panel-list" id="cartItems"></div>
+  <div class="panel-footer">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div><strong>Total:</strong> <span id="cartTotal">$0.00</span></div>
+      <div id="cartSummaryCount" style="font-weight:700"></div>
+    </div>
+    <button id="checkout" class="checkout-btn">🤑 Finalizar compra 🔥</button>
+  </div>
+</div>
+
+
+
+<!-- ===================== TOAST ===================== -->
+<div id="toast" class="toast">Hecho</div>
+
+<!-- ===================== FOOTER NUEVO (final de página) ===================== -->
+<footer class="footer-final">
+  <div style="font-weight:500">2 Corintios 12:9: "Bástate mi gracia; porque mi poder se perfecciona en la debilidad."</div>
+  <small>© 2025 RutaGracia. Todos los derechos reservados</small>
+</footer>
+
+<!-- ===================== SCRIPTS ===================== -->
+
+
+
+
+<script>
+
+
+
+
+/* ===================== DATA ===================== */
+
+
+let products = [
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {
+    id: 1,
+    title: '🛵 Q58 Max Intercomunicador Bluetooth',
+    price: 31.99,
+    category: 'intercom',
+    img: 'https://img.kwcdn.com/product/fancy/979596db-21ae-47c8-9804-773972892a4e.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Intercomunicador dual con Bluetooth 5.3 y chip de doble núcleo para una conexión estable. Permite la comunicación entre dos motociclistas con un alcance de hasta 600 metros. Ofrece audio de alta calidad con reducción de ruido CVC + DSP. Es un dispositivo multifuncional que incluye Radio FM, una mini linterna LED integrada y una ranura para tarjeta Micro SD (lector de tarjetas). Cuenta con certificación IP65 que garantiza su resistencia al agua y al polvo. Tiene radio FM, lector sd y linterna. Duracion de bateria 20 horas aprox'
+  },
+
+
+  {
+    id: 2,
+    title: '🎧 Y12 Pro Intercomunicador Bluetooth',
+    price: 25.99,
+    category: 'intercom',
+    img: 'https://img.kwcdn.com/product/fancy/4b4d1ff7-5963-4833-b26b-dcce50ab5012.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Unico intercomunicador que te permite escuchar musica y hablar al mismo tiempo con tu copiloto; con una distancia de hasta 500 m de intercom; con reduccion de ruido, sonido estereo; proteccion ipx6 contra el agua. Bateria de larga duracion de aprox 14 a 16 horas.'
+  },
+  {
+    id: 3,
+    title: '🎙 Y13 Pro Intercomunicador Bluetooth',
+    price: 28.99,
+    category: 'intercom',
+    img: 'https://img.kwcdn.com/product/fancy/993e68a4-51d8-4e41-a846-cfae0296a5d1.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Unico intercomunicador que te permite escuchar musica y hablar al mismo tiempo con tu copiloto. Alcance de intercom de hasta 600 metros. Este dispositivo está diseñado para mejorar la claridad de la conversación gracias a su avanzada tecnología de reducción de ruido DSP. Además cuenta con radio FM, sistema de sonido estereo y cuenta con resistencia al agua y al polvo (IPX6), compatible con la mayoría de los cascos y fácil de instalar. Duracion de bateria de 16 a 18 horas aprox.'
+  },
+  {
+    id: 4,
+    title: '📢 C6 Pro Intercomunicador Bluetooth',
+    price: 33.49,
+    category: ["intercom"],
+    img: 'https://www.edyell.in/wp-content/uploads/2024/11/C6-001.jpg',
+    desc: 'El intercomunicador mas completo tiene la funcion para compartir musica y hablar al mismo tiempo con el copilito, tiene radio fm, lector para tarjeta micro sd, linterna. Cuenta con reducción de ruido, conexión estable para llamadas, música y navegación GPS, además de batería de larga duración y resistencia al agua para un uso confiable en cualquier aventura sobre dos ruedas.'
+  },
+  {
+    id: 5,
+title: '🎧 P20 2X Intercomunicador Full Duplex',
+    price: 25.99,
+    category: ["intercom"],
+    img: 'https://ae-pic-a1.aliexpress-media.com/kf/S70719158e17544999ea3a4b523dc8feeF.jpg',
+    desc: 'Intercomunicador Full Duplex diseñado para mantener conversaciones fluidas con tu copiloto mientras escuchas música al mismo tiempo. Ofrece un alcance de hasta 500 metros entre intercomunicadores, sonido estéreo de alta calidad y tecnología de reducción de ruido para una comunicación más clara. Su certificación IPX6 brinda protección contra la lluvia y salpicaduras, mientras que su batería de larga duración proporciona entre 14 y 16 horas de uso continuo.'
+  },
+
+{
+    id: 6,
+    title: '🎧 P30 Pro Intercomunicador',
+    price: 26.99,
+    category: ["intercom"],
+    img: 'https://img.kwcdn.com/product/open/bdb8a79470604b50b0d133d092c2d554-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Intercomunicador Bluetooth ideal para viajes en pareja, permitiendo escuchar música y mantener conversaciones simultáneamente con tu copiloto. Cuenta con un alcance de hasta 500 metros entre dispositivos, sonido estéreo de alta calidad y tecnología de reducción de ruido para una comunicación más clara durante la ruta. Su certificación IPX6 ofrece protección contra lluvia y salpicaduras, mientras que su batería de larga duración proporciona aproximadamente entre 14 y 16 horas de uso continuo.'
+},
+{
+    id: 7,
+    title: '🎧 D2-6X Intercomunicador para 6',
+    price: 36.99,
+    category: ["intercom"],
+    img: 'https://motostorebogota.com/wp-content/uploads/2025/07/D2-6X_1.jpg',
+    desc: 'Intercomunicador Bluetooth 5.1 diseñado para grupos de hasta 6 motociclistas, con un alcance de comunicación de hasta 1200 metros. Incorpora tecnología de reducción de ruido para conversaciones más claras, sonido de alta calidad para música y navegación GPS, además de certificación IPX6 resistente al agua y al polvo. Su batería de larga duración y conexión estable lo convierten en el compañero ideal para rutas y viajes en grupo.'
+},
+
+{
+    id: 8,
+    title: '📞 V6 Plus Intercomunicador Bluetooth',
+    price: 36.99,
+    category: "intercom",
+    img: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/c39b2493ce347fed1566d2364fdba0be.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Intercomunicador Bluetooth 5.1 diseñado para grupos de hasta 6 motociclistas, con un alcance de comunicación de hasta 1200 metros. Incorpora tecnología de reducción de ruido para conversaciones más claras, sonido de alta calidad para música y navegación GPS, además de certificación IPX6 resistente al agua y al polvo. Su batería de larga duración y conexión estable lo convierten en el compañero ideal para rutas y viajes en grupo.'
+},
+
+
+  {
+    id: 9,
+    title: '📻 BT26 Intercomunicador Bluetooth',
+    price: 29.99,
+    category: 'intercom',
+    img: 'https://image.made-in-china.com/202f0j00ILHBPdWrnMch/Bt26-500m-Intercom-Motorcycle-Helmet-Bluetooth-Compatible-Headset-Waterproof-Noise-Cancelling-Earphone.webp',
+    desc: 'El BT26 es un sistema robusto que emplea Bluetooth 5.0 y está optimizado para la comunicación en grupo, soportando la interconexión de hasta 6 motociclistas con un amplio rango de hasta 1200 metros. Este intercomunicador integra tecnología de cancelación de ruido DSP para asegurar la claridad del audio durante las conversaciones a velocidad. Como funciones adicionales, incluye Radio FM y es compatible con el emparejamiento con sistemas de intercomunicación de otras marcas (conexión universal), todo en un cuerpo resistente al agua.'
+  },
+
+
+
+
+
+  {
+    id: 10,
+    title: '🎤 Q28 Max Audífono Bluetooth',
+    price: 54.99,
+  category: ["intercom", "headsets"],
+    img: 'https://img.kwcdn.com/product/fancy/e4da7051-4f83-4c97-bd96-657d29374d9c.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Dispositivo de comunicación de alto rendimiento para casco, impulsado por Bluetooth 5.3, que ofrece conexión estable y audio de alta fidelidad. Su característica distintiva es la Cámara HD 1080P integrada con lente gran angular de 120°, ideal para grabar tus rutas (dashcam) y capturar fotos, con soporte para tarjeta Micro SD de hasta 256 GB. Cuenta con un sistema avanzado de doble cancelación de ruido (CVC + DSP) para llamadas nítidas. Es resistente al agua y al polvo (IP66 o IP65), compatible con el asistente de voz (AI) y permite escuchar música, recibir llamadas y seguir instrucciones de GPS.'
+  },
+
+
+
+
+{
+    id: 11,
+    title: '📢 C8 Pro Intercomunicador Bluetooth',
+    price: 32.99,
+    category: 'intercom',
+    img: 'https://www.edyell.in/wp-content/uploads/2024/08/1.jpg',
+    desc: 'El C8 Pro es un sistema avanzado de comunicación con tecnología Bluetooth 5.1, que permite la conversación manos libres y la comunicación grupal de hasta 6 motociclistas con un alcance efectivo de hasta 1000 metros. Este intercomunicador destaca por su fidelidad de sonido, que se complementa con un potente sistema de reducción de ruido DSP, garantizando conversaciones claras incluso a alta velocidad. Proteccion ipx6 (proteccion contra el agua).'
+},
+
+  {
+    id: 12,
+    title: '🔊 C50 Intercomunicador Bluetooth',
+    price: 29.99,
+    category: 'intercom',
+    img: 'https://img.kwcdn.com/product/fancy/f5a95be3-f6d2-46ec-a856-6c337c4c914b.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Este intercomunicador para casco utiliza Bluetooth 5.1 con un chip de bajo consumo, facilitando la comunicación nítida y segura entre dos motociclistas con un alcance de hasta 500 metros en condiciones óptimas. El C50 está diseñado para ofrecer una experiencia de audio de calidad con altavoces estéreo HD y un micrófono que incorpora cancelación de ruido CVC/DSP para mitigar el sonido del viento y el motor. Además de la comunicación, permite la conexión a dos dispositivos móviles simultáneamente para escuchar música, recibir llamadas y seguir las instrucciones del GPS, contando con un diseño con resistencia al agua y al polvo con clasificación IPX6.'
+  },
+
+  {
+    id: 13,
+    title: '📡 V10 X2 Intercomunicador Bluetooth',
+    price: 24.99,
+    category: 'intercom',
+    img: 'https://img.kwcdn.com/product/fancy/3988d35f-dc8b-49a8-8332-a255ab0e997a.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Diseñado para la comunicación dual sencilla, el V10 X2 utiliza Bluetooth 5.0 y permite la conversación full-duplex (simultánea) entre dos usuarios a distancias de hasta 500 metros. Es un equipo confiable y resistente, con un diseño compacto que ofrece protección contra la lluvia. Además de su función de intercomunicador, permite recibir y realizar llamadas, reproducir música en estéreo desde su teléfono y recibir comandos de voz para una navegación segura.'
+  },
+
+{
+    id: 14,
+    title: '🎚 P20 Intercomunicador Bluetooth',
+    price: 22.50,
+    category: 'intercom',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr37eYOcFQZyD2peFNubhFE5jn61p-JTD-vg&s',
+    desc: 'El P20 es un intercomunicador semi-dúplex, por lo que no mantiene la voz abierta de forma continua: para hablar, se debe presionar un botón, y cada usuario transmite por turnos. Incluye micrófono con reducción de ruido, altavoces de bajo perfil, y conexión estable por Bluetooth 5.0 para llamadas, GPS y música. Su diseño es resistente a salpicaduras, ligero y fácil de usar, ideal como intercom básico y funcional.'
+},
+
+
+ 
+  {
+    id: 15,
+    title: '🥁 Auriculares Bluetooth Y10',
+    price: 20.99,
+    category: "headsets",
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjz1rf1P-hAXfevkvMPkozY4L2IoL-_gc73w&s',
+    desc: 'El modelo Y10 ofrece un rendimiento inalámbrico eficiente gracias a la tecnología Bluetooth 5.3. Estos audífonos TWS proporcionan una excelente calidad de sonido estéreo, con énfasis en un perfil de audio equilibrado. Su diseño está optimizado para la comodidad y un ajuste ligero, y cuentan con controles táctiles precisos para facilitar la gestión de la reproducción y la activación del asistente de voz del smartphone.'
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {
+  id: 16,
+  title: '🔔 Alarma para moto con encendido y apagado a distancia',
+  price: 19.50,
+  category: ["security"],
+  img: 'https://img.kwcdn.com/product/fancy/d1678ce4-81fd-4746-9540-8d8fc32fb9b5.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Sistema de alarma antirrobo universal de 12V para motocicletas, que incluye una sirena de alto nivel sonoro (típicamente 125dB) y se activa mediante un sensor de vibración con sensibilidad ajustable. Este sistema de seguridad básico generalmente viene con controles remotos que permiten armar y desactivar la alarma, y en muchos casos, ofrece la función de arranque o apagado remoto del motor.'
+},
+ {
+  id: 17,
+  title: '🔥 Cupulas para moto (varios colores)',
+  price: 17.99,
+  category: ["body", "moto"], 
+  img: 'https://img-2.kwcdn.com/product/fancy/2cb020bf-f1bd-420b-ba25-94be28be6976.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Fabricadas en policarbonato de alta resistencia a impactos y rayos UV, cuentan con un diseño adaptable que se ajusta fácilmente a la mayoría de modelos (Naked, Custom o Scooters) mediante un sistema de anclaje robusto y regulable. Disponibles en acabados transparentes, ahumados o negros, son la solución ideal para reducir la fatiga en viajes largos y darle un aspecto más robusto y personalizado a tu motocicleta en cuestión de minutos.'
+},
+
+ {
+  id: 18,
+  title: '🚦 Luces direccionales con luz de parada',
+  price: 5.99,
+  category: ["body", "lights", "security"],
+  img: 'https://img.kwcdn.com/product/open/3b52d27449ca43b09dc91872aa0b6eac-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Par de luces direccionales LED (12V) que integran la función de luz de freno (stop), ofreciendo doble intensidad de iluminación. Están diseñadas para mejorar significativamente la seguridad y visibilidad trasera, ya que funcionan como intermitentes y, simultáneamente, se iluminan con mayor potencia al frenar. Suelen ser impermeables y fáciles de instalar.'
+},
+
+{
+  id: 19,
+  title: '🪶 Aleron para moto',
+  price: 13.99,
+  category: ['body', 'moto'],
+  img: 'https://img.kwcdn.com/product/fancy/c2293332-bba3-4c28-bd71-b6a1fe3eec28.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Alerón aerodinámico de estilo deportivo y carácter universal, fabricado en plástico ABS resistente al desgaste. Se instala fácilmente mediante un sistema adhesivo en el carenado de la motocicleta, siendo su principal función la mejora estética y deportiva de la moto.'
+},
+{
+  id: 20,
+  title: '🛡 Aleron para moto (aletas)',
+  price: 16.99,
+  category: ['body', 'moto'],
+  img: 'https://img.kwcdn.com/product/open/42a23d6d27ee4b0bbd706bde0142419a-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Par de aletas o winglets aerodinámicos laterales universales, fabricados en material ABS con un acabado mate o de imitación de fibra de carbono. Su instalación es rápida mediante adhesivo de alta resistencia y su propósito principal es añadir un toque visual de alta competición al carenado de la motocicleta, mejorando la estética aerodinámica.'
+},
+
+{
+  id: 21,
+  title: '📱 Soporte para celular',
+  price: 4.99,
+  category: ['body', 'moto', 'security', 'phone'],
+  img: 'https://img.kwcdn.com/product/open/4d42d88823274eeab0ac8341b4751029-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Soporte universal diseñado para fijar de manera segura un teléfono móvil al manillar de la motocicleta o bicicleta. Este accesorio suele estar fabricado con plástico ABS de alta resistencia y, dependiendo del diseño, puede ser un soporte de pinza o un estuche con cierre hermético para ofrecer protección contra el agua y las vibraciones.'
+},
+{
+  id: 22,
+  title: '🔒 Candado para disco de freno con alarma',
+  price: 14.50,
+  category: ['security'],
+  img: 'https://img.kwcdn.com/product/fancy/dd17f3b4-121d-447f-a002-3316e58d63b0.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Dispositivo de seguridad compacto y portátil fabricado en acero o aleación metálica de alta resistencia. Su función es bloquear el disco de freno de la moto o bicicleta, impidiendo que la rueda gire y actuando como un eficaz disuasivo antirrobo. Se caracteriza por su fácil y rápido uso, a menudo incluye llaves de seguridad y un estuche para su transporte.'
+},
+{
+  id: 23,
+  title: '🧱 Cadena para moto de acero reforzado',
+  price: 4.99,
+  category: ['security'],
+  img: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/18514567ff0092fe7ad1fb14d91b6d56.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Cadena de seguridad antirrobo, fabricada con eslabones de acero trenzado o reforzados de alta resistencia a cortes. Se utiliza para asegurar la motocicleta anclándola a un objeto fijo (como un poste o baranda) y requiere un candado externo para completar el sistema de seguridad.'
+},
+{
+  id: 24,
+  title: '🖥 Carplay para moto anti agua 5"',
+  price: 64.99,
+  category: ['body', 'carplay'],
+  img: 'https://img.kwcdn.com/product/open/cb97978693964023adbb6a2e3ca84599-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Sistema de infoentretenimiento portátil diseñado específicamente para motocicletas, con una pantalla táctil HD de 5 pulgadas y resistencia de alto nivel anti-agua (IP67). Soporta Apple CarPlay y Android Auto de forma inalámbrica, permitiendo usar navegación GPS, música y llamadas desde la pantalla a través de la conectividad Bluetooth dual con el casco.'
+},
+
+
+
+
+{
+  id: 25,
+  title: '🖥 Carplay para moto con bocinas 7"',
+  price: 64.99,
+  category: ["carplay", "body"],
+  img: 'https://img.kwcdn.com/product/open/0222edbcc6104bf5a2ec19dc16174cd4-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Sistema multimedia para motocicleta con una pantalla táctil IPS de 7 pulgadas con resolución HD y brillo de hasta 800 nits. Tiene parlantes integrados (no es impermible) y permite el uso de Apple CarPlay y Android Auto de forma inalámbrica. Su Bluetooth dual permite conectar el teléfono y los auriculares del casco o un intercomunicador simultáneamente.'
+},
+{
+  id: 26,
+  title: '🖥 Carplay para moto anti agua con 2 camaras',
+  price: 109.99,
+  category: ["carplay", "body"],
+  img: 'https://img.kwcdn.com/product/fancy/ebd99379-629b-4ab3-8981-7c934e7f6155.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Sistema multimedia de alta gama que combina conectividad y seguridad vial. Posee una pantalla táctil HD resistente al agua (IP67) y ofrece la funcionalidad CarPlay y Android Auto inalámbrico. Su característica principal es el DVR integrado con doble cámara (frontal y trasera) Full HD 1080P o 2K, lo que permite la grabación continua de la ruta.'
+},
+{
+  id: 27,
+  title: '🧤 Guantes proteccion en nudillos para moto',
+  price: 6.49,
+  "category": ["clothes", "home", "moto"],
+  img: 'https://img.kwcdn.com/product/fancy/cfb619db-a335-4085-921d-dcf40be22f44.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Guantes de conducción fabricados con materiales como microfibra, cuero sintético o tejido transpirable. Ofrecen protección en los nudillos, palma antideslizante para un mejor agarre del manillar, y en muchos modelos, cuentan con la capacidad de ser utilizados con pantallas táctiles.'
+},
+
+  {
+    "id": 29,
+    "title": "🎖️ Guantes tacticos para moto (verde/negro)",
+    "price": 11.99,
+    "category": ["clothes", "home", "moto"],
+    "img": "https://i.postimg.cc/LsGMbYDw/Captura-de-pantalla-2026-04-29-185140.png",
+    "desc": "Guantes de exterior unisex con diseño antideslizante y cierre ajustable en la muñeca para un ajuste seguro y cómodo. Ofrecen agarre firme, ideales para conducción, motociclismo. Fabricados con materiales resistentes y lavables a mano."
+  },
+
+  {
+    "id": 30,
+    "title": "👩‍🦰 Guantes para dama impermeables para moto",
+    "price": 6.49,
+    "category": ["clothes", "home", "moto"],
+    "img": "https://i.postimg.cc/cJFp8Drc/Whats-App-Image-2026-04-29-at-7-17-53-PM.jpg",
+    "desc": "Guantes de cuerina para mujer con diseño de encaje y lazo de punto negro, estilo largo y elegante. Cuentan con interior afelpado que brinda mayor calidez y comodidad, ideales para complementar looks en climas fríos.."
+  },
+
+
+  {
+    "id": 31,
+    "title": "⛈️ Guantes unisex impermeables para moto",
+    "price": 6.99,
+    "category": ["clothes", "home", "moto"],
+    "img": "https://i.postimg.cc/B61mQNFr/Whats-App-Image-2026-04-29-at-7-17-18-PM.jpg",
+    "desc": "Guantes de cuerina, estilo largo y elegante. Cuentan con interior afelpado que brinda mayor calidez y comodidad, ideales para temporada de invierno."
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {
+  id: 32,
+  title: '🔥 Escape SC Project',
+  price: 27.99,
+  category: ["body"],  // Estética y Carrocería
+  img: 'https://i.postimg.cc/v8Jdtpgq/Whats-App-Image-2026-04-17-at-1-11-11-AM.jpg',
+  desc: 'Silenciador universal de estilo deportivo (slip-on) que imita el diseño racing de la línea SC Project. Está fabricado en acero inoxidable y/o imitación fibra de carbono, se caracteriza por ser liviano y está destinado a mejorar el sonido de la motocicleta, brindándole un tono más profundo, agresivo y deportivo.'
+},
+{
+  id: 33,
+  title: '🪢 Arnes casco de menton simple',
+  price: 11.99,
+  category: ["helmet","phone"],  // Accesorios para Casco, Soportes para Grabar
+  img: 'https://img.kwcdn.com/product/fancyalgo/toaster-api/toaster-processor-image-cm2in/c5ca1e90-3919-11ef-9e90-0a580a69145b.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Arnés de sujeción universal y ajustable, fabricado en plástico y correas de poliéster, diseñado para fijar de manera segura una cámara de acción (GoPro, etc.) en la barbilla (mentón) del casco integral. Permite grabar videos en primera persona (POV) con un ángulo estable y centrado.'
+},
+{
+  id: 34,
+  title: '🧩 Arnes casco de mentón celular',
+  price: 14.99,
+  category: ["helmet","phone"],  // Accesorios para Casco, Soportes para Grabar
+  img: 'https://img.kwcdn.com/product/fancy/c9055d0f-81a3-41f5-8069-e28525af526e.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Similar al arnés simple, pero con un soporte o pinza ajustable optimizada para montar un teléfono móvil (celular) en el mentón del casco. Es un sistema de correas elásticas y base de silicona que permite grabar videos y realizar vlogs con el teléfono desde la perspectiva del piloto.'
+},
+{
+  id: 35,
+  title: '📸 Pechera soporte para teléfono',
+  price: 15.80,
+  category: ["helmet","phone"],  // Accesorios para Casco, Soportes para Grabar
+  img: 'https://i.postimg.cc/zDF5mBGS/Captura-de-pantalla-2026-05-14-010431.png',
+  desc: 'Arnés de cuerpo o pechera con correas ajustables que se lleva en el tórax, diseñado para fijar un teléfono móvil de forma segura. Permite grabar videos de acción en primera persona (POV) con un ángulo bajo y estable, siendo ideal para motociclismo o actividades deportivas.'
+},
+{
+  id: 36,
+  title: '🎩 Orejas de conejo para casco',
+  price: 5.99,
+  category: ["helmet"],  // Accesorios para Casco
+  img: 'https://img.kwcdn.com/product/fancy/0833b81d-1034-4923-8ebf-289e9bf6725a.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Accesorios decorativos universales, hechos de tela suave, felpa o goma, con forma de orejas de conejo. Se fijan fácilmente a la superficie del casco mediante adhesivo fuerte o ventosas, siendo un accesorio estético y de bajo costo para personalizar el casco.'
+},
+ {
+    id: 37,
+    title: '🐰 Orejas de Conejo para casco (varios colores)',
+    price: 7.25,
+    category: ["helmet"],  // Accesorios para Casco
+    img: 'https://img.kwcdn.com/product/fancy/98a19bb5-0fbd-40c1-8154-075189008fa3.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Es compatible con cualquier tipo de casco y se instala en segundos gracias a sus  de fuerte velcro y adhesivos incluidos. Disponibles en una gran variedad de colores, son ligeras, aerodinámicas y perfectas para destacar en el camino con estilo sin comprometer la seguridad de tu equipo.'
+},
+
+{
+  id: 38,
+  title: '🧣 Pasamontañas de licra',
+  price: 3.99,
+  category: ["helmet","clothes"],  // Accesorios para Casco, Indumentaria
+  img: 'https://img.kwcdn.com/product/fancy/ed79cb23-5f64-4cd0-8879-bb5b3fa52024.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Máscara facial completa (balaclava) ligera y delgada, fabricada en fibra de poliéster o nailon transpirable. Se utiliza bajo el casco para absorber el sudor y evitar el contacto directo con la transpiración, ofreciendo a su vez una capa ligera de protección contra el viento y el polvo.'
+},
+
+
+
+
+
+{
+    id: 39,
+    title: '🏹 Pasamontañas tejido bandolero',
+    price: 5.49,
+    category: ["helmet","clothes"],
+    img: 'https://img.kwcdn.com/product/fancy/599ee4f6-cea2-4a09-b998-392c35dc271c.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Pasamontañas de tejido más grueso (lana acrílica o mezcla), diseñadas para ofrecer gran protección térmica en condiciones de frío extremo. Su material más denso está optimizado para aislar el calor en la cabeza y cuello, siendo ideal para climas fríos y conducción invernal.'
+},
+{
+    id: 40,
+    title: '🚦 Tira led de 5m con aplicación de cambio de color',
+    price: 11.49,
+    category: "home",
+    img: 'https://img.kwcdn.com/product/fancy/9c122901-5e2e-4c72-a6fa-8bd2941ad504.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Tira de luces LED RGB (multicolor) de 5 metros de longitud que funciona a bajo voltaje y es controlable a través de una aplicación móvil (vía Bluetooth). Esto permite la gestión remota del cambio de color, brillo y efectos (modo música, parpadeo), ideal para iluminación ambiental y decoración versátil.'
+},
+{
+    id: 41,
+    title: '🗝 Cubierta de llave Wakanda',
+    price: 5.49,
+    category: "moto",
+    img: 'https://img.kwcdn.com/product/open/f414112dbe2942c2a8f7110927753b8f-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Cubierta decorativa y protectora para el botón de encendido (push-to-start), fabricada en aleación metálica de alta calidad. Presenta un diseño inspirado en la tecnología y el arte de Wakanda, con un mecanismo de tapa abatible o giratoria que no solo protege el botón contra activaciones accidentales.'
+},
+{
+    id: 42,
+    title: '🕷 Cubierta de llave Venom',
+    price: 5.99,
+  category: ["moto", "body"],
+    img: 'https://img.kwcdn.com/product/fancy/7bbe8fe6-49ff-4817-a492-5a6e7d665688.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Cubierta para el botón de encendido (push-to-start) fabricada en aleación de zinc o aluminio y con un acabado duradero. El diseño se centra en el icónico simbionte Venom, con detalles que evocan su agresividad y textura.'
+},
+{
+    id: 43,
+    title: '🎀 Moños-lazos para caso (varios colores)',
+    price: 6.99,
+  category: "helmet",
+    img: 'https://i.postimg.cc/GtHhywMp/20260429-184212.jpg',
+    desc: 'Moño lazo decorativo para casco. Su tamaño grande permite una mayor visibilidad, convirtiéndolo en un accesorio ideal para personalizar el casco de forma original. Fabricado con materiales ligeros y acolchonados, es fácil de colocar y mantener. Disponible en colores verde agua, rojo, morado y lila.'
+},
+{
+    id: 44,
+    title: '🤖 Cubierta de llave Ironman',
+    price: 5.49,
+  category: ["moto", "body"],
+    img: 'https://img.kwcdn.com/product/open/9696d23299c948c4b6828a31c94e9f9f-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Diseñada para el botón de encendido (push-to-start), esta cubierta está hecha de aleación de aluminio y presenta un diseño inspirado en la máscara de Ironman (Tony Stark).'
+},
+{
+    id: 45,
+    title: '🕸️ Cubierta de llave Spiderman',
+    price: 5.49,
+  category: ["moto", "body"],
+    img: 'https://img.kwcdn.com/product/fancy/00cedbdc-d022-42ac-a710-6ad03ffe4417.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Carcasa protectora y decorativa para el botón de encendido (push-to-start), fabricada en aleación metálica duradera. Incorpora elementos visuales del traje de Spiderman.'
+},
+{
+  id: 46,
+  title: '💡 Ojos de luz LED',
+  price: 4.99,
+  category: ["body", "lights"],   // ← AHORA EN 3 CATEGORÍAS
+  img: 'https://img.kwcdn.com/product/fancy/c953e5ea-1c99-49d4-a6d1-6c216a2181de.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Luces auxiliares o de posición LED, de diseño compacto (a menudo triangulares o tipo "Ojo de Ángel") y funcionan a 12V. Están diseñados para mejorar la visibilidad de la motocicleta, actuando como luz diurna o decorativa, y algunos modelos incluyen un efecto estroboscópico. Son fáciles de instalar y están fabricados con materiales que ofrecen resistencia básica al agua y bajo consumo energético.'
+},
+{
+    id: 47,
+    title: '🎅 Orejas de Navidad para casco',
+    price: 6.60,
+    category: "helmet",
+    img: 'https://i.postimg.cc/dQZHx21P/22c8ace8-3c0d-410f-9d54-d302febd51ac.jpg',
+    desc: 'Accesorios decorativos para casco fabricados en felpa, con formas navideñas, de instalación universal mediante adhesivo o velcro.'
+},
+{
+    id: 48,
+    title: '🚦 Espejos retrovisores aleron con direccionales (grandes)',
+    price: 19.45,
+    category: ["body", "moto", "security"],
+    img: 'https://img.kwcdn.com/product/fmket/89f1756b5511eca7570bbc55dd12d547.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Consigue un estilo de superdeportiva con estos espejos retrovisores tipo alerón con direccionales LED integradas. Su diseño 2 en 1 permite rotarlos para usarlos como espejos funcionales o plegarlos como alerones aerodinámicos, mejorando la estética de la moto. Fabricados en aluminio resistente, incluyen luces LED de alta luminosidad para giros más seguros y visibles. Son fáciles de instalar, compatibles con la mayoría de motos deportivas y ofrecen un acabado moderno y agresivo en segundos..'
+},
+{
+    id: 49,
+    title: '📦 Maletero de moto 45 litros',
+    price: 34.99,
+  category: ["moto", "body"],
+    img: 'https://img.kwcdn.com/product/open/51f6e7d83b374e64a4d6c7f6b1da72fb-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Baúl rígido de 45L para motocicleta, fabricado en plastico ABS reforzado, impermeable, con sistema de doble cerradura.'
+},
+{
+    "id": 50,
+    "title": "🖼️ Calcomanias para moto",
+    "price": "Desde $1,00 hasta $4,00",
+    "category": "body",
+    "img": "https://img.kwcdn.com/product/open/979af5d4480d4e43808d99f7d361c9ec-goods.jpeg?imageView2/2/w/800/q/70/format/avif",
+    "desc": "Variedad de vinilos decorativos holográficos, JDM, anime y estilos tornasol para personalizar carenado, tanque o casco. Escriba al interno para que le puedan enviar los modelos disponibles."
+},
+{
+  id: 51,
+  title: '🎧 Audifonos LAN XUN',
+  price: 7.50,
+category: ["headsets", "home", "electronics"],
+  img: 'https://img.kwcdn.com/product/open/2b175fa0febb4b989ecc3c012f8f5859-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Audífonos TWS Bluetooth 5.3 con sonido HiFi, resistencia IPX4 y estuche con pantalla LED.'
+},
+{
+  id: 52,
+  title: '🎧 AirPods 2da Generación (cancelación de ruido)',
+  price: 22.00,
+category: ["headsets", "home", "electronics"],
+  img: 'https://i.postimg.cc/wMZmhYhh/Whats-App-Image-2025-11-20-at-10-22-06-AM.jpg',
+  desc: 'Audífonos tipo AirPods con cancelación de ruido, controles táctiles y soporte para asistentes de voz.'
+},
+
+
+{
+  id: 53,
+  title: '🕷️ Red para casco araña',
+  price: 5.99,
+  category: ["moto", "helmet", "body"],
+  img: 'https://img.kwcdn.com/product/fancy/784739cd-7567-4ae2-b19a-7992db605f6a.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Malla elástica de nailon de alta resistencia y seis ganchos metálicos cubiertos, diseñada para sujetar de forma segura el casco, chaquetas o pequeños equipajes al asiento o portaequipajes de la motocicleta. Su diseño en forma de "araña" proporciona múltiples puntos de anclaje para una fijación estable y segura sin rayar la pintura.'
+},
+{
+  id: 54,
+  title: '🕸️ Red para casco cuádruple',
+  price: 2.99,
+  category: ["helmet", "body"],
+  img: 'https://img.kwcdn.com/product/fancy/050f55fb-44d2-4060-a76d-5c60a935fd7e.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Red de carga elástica, de formato más simple, que utiliza cuatro ganchos para asegurar el casco u otros artículos al vehículo. Es una solución de bajo costo para la sujeción, capaz de expandirse significativamente para adaptarse a diferentes tamaños de objetos en la parte trasera de la moto.'
+},
+{
+  id: 55,
+  title: '🛡️ Protector de tanque',
+  price: 4.99,
+  category: ["moto", "body"],
+  img: 'https://img.kwcdn.com/product/fancy/dd939505-d431-4bbf-9546-fa5ab45b01cf.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Un pad o calcomanía adhesiva, fabricada en caucho o polímero resistente a la abrasión, diseñado para colocarse en la parte central del tanque de combustible. Su función principal es proteger la pintura de los arañazos causados por el cierre de la chaqueta, los botones del pantalón o el roce continuo.'
+},
+{
+  id: 56,
+  title: '🔑 Llaveros de moto con motor de fricción',
+  price: 4.98,
+  category: "moto",
+  img: 'https://img.kwcdn.com/product/fancy/bd35b6a6-4673-4435-a6fd-627181e1a47c.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Llaveros decorativos y lúdicos que replican una motocicleta a escala e incorporan un pequeño motor de fricción (pull back). Funcionan como un mini juguete al ser arrastrados y soltados, siendo un accesorio divertido para las llaves.'
+},
+{
+  id: 57,
+  title: '🛵 Llaveros de motoneta con motor de fricción',
+  price: 5.49,
+  category: ["moto"],
+  img: 'https://img.kwcdn.com/product/fancy/529a97b5-62c6-48d4-8613-40c836a82136.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Llavero moto 3D estilo motoneta en diferentes colores y diseños, que también está equipado con un mecanismo de motor de fricción. Es un elemento decorativo y de entretenimiento para el llavero.'
+},
+{
+  id: 58,
+  title: '🌀 Cubierta de llave Espiral',
+  price: 5.50,
+  category: "moto", 
+  img: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/58dd71ea94a80c0f091db0fb4518a390.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Una carcasa protectora para la cabeza de la llave, fabricada en goma de silicona o nitrilo con un diseño de textura en espiral. Su propósito es proteger la llave del desgaste, evitar que se raye y proporcionar un agarre ergonómico y cómodo.'
+},
+{
+  id: 59,
+  title: '👕 Camiseta estilo biker',
+  price: 13.99,
+  category: "clothes",
+  img: 'https://img.kwcdn.com/product/fancy/8bd4c30c-3ac9-4320-819c-7d58270d987e.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Prenda de vestir de estilo casual, que suele presentar gráficos y motivos relacionados con la subcultura motociclista (esqueletos, motores, vintage). Está confeccionada con tejido suave y flexible para la comodidad diaria o como t-shirt base.'
+},
+{
+  id: 60,
+  title: '🪞 Visera de casco compatible con AGV',
+  price: 23.99,
+  category: "helmet",
+  img: 'https://img.kwcdn.com/product/fancy/9024a1d4-302d-4526-8864-1fd59cac86fb.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Un visor de reemplazo compatible con modelos populares de cascos AGV (como K1, K3SV, K5), fabricado en policarbonato (PC) y con tratamiento anti-UV y antiarañazos. Está disponible en diferentes tonos de color (espejo, humo, etc.) para mejorar la protección visual contra el sol y el viento.'
+},
+
+{
+  id: 61,
+  title: '🧼 Cepillo para limpieza de cadena',
+  price: 4.45,
+  category: ["moto", "body", "security"],
+  img: 'https://img.kwcdn.com/product/fancy/e3ee06bf-48d6-43ea-8959-443425cf21d2.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Herramienta esencial de mantenimiento fabricada con cerdas de nailon duraderas y un diseño de tres cabezales (forma de U). Permite limpiar la cadena simultáneamente desde múltiples ángulos, eliminando de forma rápida y eficiente la suciedad y grasa acumulada.'
+},
+{
+  id: 62,
+  title: '💡 Tira LED intermitente para casco',
+  price: 6.50,
+  category: ["helmet", "lights"],
+  img: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/50647c4c48e9e1919b4e5606ea2a0578.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Tiras de luz LED electroluminiscente (EL) adhesivas que se instalan de forma universal en el casco. Su función principal es aumentar la visibilidad nocturna del motociclista en la carretera y funcionan con varios modos (fijo, intermitente), mejorando significativamente la seguridad.'
+},
+{
+  id: 63,
+  title: '🎧 Audifonos Bluetooth TWS Y26-1',
+  price: 8.99,
+category: ["headsets", "home", "electronics"],
+  img: 'https://img.kwcdn.com/product/fancy/f662b908-5120-4ffd-867c-cd7f4f6ca0aa.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Audífonos True Wireless Stereo (TWS) de bajo costo que utilizan la versión Bluetooth V5.3 (o similar). Son de tipo in-ear y ofrecen sonido estéreo, incorporan micrófono, controles táctiles para gestión de música/llamadas y activación del asistente de voz.'
+},
+{
+  id: 64,
+  title: '🏷️ Decoracion para placa, etc.',
+  price: 4.99,
+  category: ["moto", "body"],
+  img: 'https://img.kwcdn.com/product/fancy/06615c95-8d45-4825-aeea-6813a9c97689.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Accesorios decorativos para la motocicleta, que pueden ser tornillos, cubiertas de perno, o placas de matrícula no reglamentarias personalizadas. Están fabricados en aleación de aluminio o PVC y se usan para añadir un toque de estilo en la zona de la placa o el carenado.'
+},
+{
+  id: 65,
+  title: '😺 Orejas de gato para casco (goma)',
+  price: 4.49,
+  category: "helmet",
+  img: 'https://img.kwcdn.com/product/fancy/a328beca-6efc-4b67-a6a2-83cad77597c7.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Accesorios decorativos universales, hechos de goma (TPU) o plástico rígido, con una llamativa forma de orejas de gato. Se fijan al casco mediante adhesivo fuerte (3M) y son una forma divertida y visible de personalizar el diseño sin alterar la seguridad estructural.'
+},
+{
+  id: 66,
+  title: '😈 Cuernitos para casco',
+  price: 2.39,
+  category: "helmet",
+  img: 'https://img.kwcdn.com/product/fancy/7fc2946b-64b2-4600-9723-4f0db7fe086a.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Pequeños accesorios decorativos hechos de goma de silicona o plástico con la forma de cuernos de diablo. Se adhieren de forma universal a la parte superior del casco con cinta adhesiva o ventosas y son una opción de bajo costo para dar al motociclista un aspecto de estilo punk o divertido.'
+},
+{
+  id: 67,
+  title: '❄️ Par de mangas protectoras refrescantes',
+  price: 3.50,
+  category: "clothes",
+  img: 'https://img.kwcdn.com/product/fancy/dc60dc84-5476-4744-9789-7bdd8441f398.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Mangas textiles de "seda de hielo" (nailon/spandex) que se sienten frescas al contacto, diseñadas para la conducción y actividades al aire libre. Su principal característica es la protección solar UPF 50+, bloqueando los rayos UV nocivos, mientras que su material transpirable ayuda a secar el sudor rápidamente.'
+},
+{
+  id: 68,
+  title: '📱 Soporte para celular con cubierta protectora',
+  price: 6.99,
+  category: "phone",
+  img: 'https://img.kwcdn.com/product/fancy/a70a8633-a39e-44aa-ad99-e3793327aabf.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Soporte universal para motocicleta que se fija al manillar o espejo, e incluye una funda hermética y resistente al agua (lluvia, polvo). Su cubierta frontal es de pantalla táctil sensible, lo que permite utilizar el celular para navegación GPS o música con total protección contra los elementos, y a menudo ofrece rotación de 360 grados.'
+},
+{
+  id: 69,
+  title: '🌧️ 2 micas antilluvia-niebla para visera',
+  price: 6.49,
+  category: ["helmet", "security"],
+  img: 'https://img.kwcdn.com/product/open/09fe37273b1f4afb9ceb8ac9c1a6f230-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Láminas transparentes de PET especial de fácil aplicación adhesiva a la visera del casco, con un diseño universal. Funcionan como película antivaho (en el interior) y/o antilluvia (en el exterior), mejorando drásticamente la visibilidad en condiciones climáticas adversas como neblina, frío o lluvia.'
+},
+{
+  id: 70,
+  title: '📸 Arnes de frente',
+  price: 6.50,
+  category: "phone",
+  img: 'https://img.kwcdn.com/product/fancy/15bf1687-c968-4142-b6b0-e30a10545fb3.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Sistema de sujeción ajustable para la cabeza o el mentón del casco de motocicleta, diseñado para montar una cámara de acción (GoPro o similar). Su objetivo es capturar videos en el ángulo de visión del piloto (POV), ofreciendo una toma inmersiva y estable de la ruta.'
+},
+{
+  id: 71,
+  title: '💨 Alerones laterales (diseño de carbono)',
+  price: 13.99,
+  category: "body",
+  img: 'https://img.kwcdn.com/product/fancy/595b9e5f-4261-48d4-8fca-3d7a9ee2ed57.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Aletas aerodinámicas universales para el carenado, fabricadas en plástico ABS con un llamativo acabado de imitación fibra de carbono. Estos accesorios son puramente estéticos, se instalan fácilmente con adhesivo y están destinados a darle a la motocicleta un aspecto más agresivo y racing.'
+},
+{
+    id: 72,
+    title: '🦅 Alerones laterales (con calcomanías)',
+    price: 14.50,
+  category: "body",
+    img: 'https://img.kwcdn.com/product/fancy/68f5d67e-a331-4cac-bfa5-1cca921f8c32.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Son alerones laterales aerodinámicos de plástico que, además del diseño agresivo, incluyen calcomanías o vinilos gráficos para una mayor personalización. Se instalan con adhesivo y combinan la estética deportiva con un toque de diseño único para destacar en el carenado de la moto.'
+},
+{
+    id: 73,
+    title: '🌟 Ojos fosforescentes para faro',
+    price: 2.25,
+  category: ["moto", "lights"],
+    img: 'https://img.kwcdn.com/product/fancy/a77c2dcc-b09a-4479-a3f6-b54f983e4602.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Tiras o aros de luz LED de baja potencia que se instalan dentro o alrededor del faro principal de la motocicleta. Su función es decorativa (styling), creando un efecto visual llamativo como luz diurna (DRL), con opciones de color que imitan el efecto de los "Ojos de Ángel".'
+},
+{
+    id: 74,
+    title: '🦇 Cubierta de llave Batman',
+    price: 5.49,
+    category: "moto",
+    img: 'https://img.kwcdn.com/product/fancy/a4848cb7-dbc2-4e17-b4a0-9899723a0b12.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Una carcasa protectora y decorativa para la cabeza de la llave de la motocicleta, fabricada en materiales duraderos como goma de silicona o aleación de aluminio con un diseño temático de Batman. Su propósito es proteger la llave contra el desgaste y personalizar el llavero.'
+},
+{
+    id: 75,
+    title: '🚦 2 tiras led secuenciales + direccionales',
+    price: 11.99,
+  category: ["light", "body", "security", "lights"],
+    img: 'https://img.kwcdn.com/product/fancy/8746c45f-de42-4aac-8bbc-5e9614d5b690.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Tiras de LED flexibles y resistentes al agua (IP68) que se utilizan como iluminación auxiliar para la motocicleta. Su característica principal es la función secuencial/dinámica para las luces direccionales (ámbar), a menudo integrando también una luz de posición o parada para una señalización de alta visibilidad y un estilo moderno.'
+},
+{
+    id: 76,
+    title: '💡 2 luces led ojos de aguila',
+    price: 5.65,
+  category: ["moto", "lights", "body"],
+    img: 'https://img.kwcdn.com/product/open/2023-12-28/1703746440920-2fddcfcd8a5340069d1e742383fada84-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Focos LED de alta luminosidad con un diseño compacto tipo perno (tornillo), construidos con carcasa de aluminio resistente al agua. Funcionan a 12V y se utilizan como luces auxiliares o DRL para la moto, ofreciendo una luz concentrada y potente, con la posibilidad de funcionar como luz estroboscópica o de freno/reversa.'
+},
+{
+    id: 77,
+    title: '🎒 Bolso cruzado tipo sprayground',
+    price: 6.99,
+    category: "clothes",
+    img: 'https://img.kwcdn.com/product/fancy/af9f0a2a-8f98-4ac7-86c5-5e76deb04909.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Un bolso de bandolera o cruzado que replica el estilo y la estética audaz, con diseños gráficos y patrones llamativos, característicos de la marca Sprayground. Ofrece una organización interna inteligente y está fabricada en material resistente al agua, ideal para el uso urbano.'
+},
+{
+    id: 78,
+    title: '🔊 Escape estilo Austin Racing',
+    price: 58.99,
+    category: "body",
+    img: 'https://img.kwcdn.com/product/fancy/33d1ab3f-fe53-4fff-9c30-48f3b3bc5721.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Una punta o silenciador de escape universal (slip-on) fabricado en acero inoxidable y/o fibra de carbono con un diseño compacto y deportivo que imita el estilo de Austin Racing. Su función principal es mejorar el sonido de la motocicleta a un tono más profundo y de carreras, y normalmente no incluye reductor de ruido (DB Killer).'
+},
+{
+    id: 79,
+    title: '🎧 Intercomunicador Bluetooth Y20 max',
+    price: 27.99,
+    category: "intercom",
+    img: 'https://img.kwcdn.com/product/fancy/37ad91e5-fa9d-4a86-b373-c97aa4bd4650.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Este intercomunicador para casco utiliza tecnología Bluetooth 5.3 y ofrece comunicación clara con un alcance de hasta 1000 metros para dos pilotos, además de resistencia al agua (IPX6) y un eficaz sistema de reducción de ruido DSP/CVC. Se distingue por su iluminación RGB con efectos de luz para un toque estético y visibilidad, soporta comandos de Asistente de Voz y permite la conexión simultánea de dos dispositivos (música, GPS y llamadas).'
+},
+{
+    id: 80,
+    title: '🛡️ Cresta romana para casco',
+    price: 6.80,
+    category: "helmet",
+    img: 'https://img.kwcdn.com/product/fancy/0818cb74-2c8f-4835-9ab2-0b3fa63500ba.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Accesorio decorativo y universal, generalmente fabricado en materiales flexibles como plástico o silicona, diseñado para ser fijado a la parte superior de cualquier casco mediante adhesivo de doble cara. Su principal función es la estética lúdica, imitando el penacho o cresta de un casco de estilo romano o mohicano, permitiendo una personalización rápida y reversible.'
+},
+{
+    id: 81,
+    title: '🚦 Acelerador de 1/4 para moto',
+    price: 20.50,
+  category: "body",
+    img: 'https://img.kwcdn.com/product/fancy/market/5c28cd7b720ccb5d44dcd7beb37136fd_E65aBRVJVaTWB.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Este es un mecanismo de acelerador rápido diseñado para manillares de 7/8" (22mm), que reduce la distancia de giro del puño necesaria para alcanzar la aceleración máxima (a solo un cuarto de vuelta). Esto se traduce en una respuesta más inmediata del motor, mejorando el rendimiento en carrera o la agilidad en la conducción deportiva, en una versión básica de aleación.'
+},
+{
+    id: 82,
+    title: '✨ Acelerador de 1/4 de aluminio',
+    price: 26.99,
+  category: ["moto", "body"],
+    img: 'https://img.kwcdn.com/product/fancy/f96b5067-3f2d-4908-b191-4e229f0e63ee.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Al igual que el modelo anterior, es un acelerador de cuarto de vuelta que acorta el recorrido del puño, pero está fabricado en aleación de aluminio CNC de alta calidad. Esta construcción le confiere mayor durabilidad, precisión y un acabado estético superior, siendo un accesorio de reemplazo de alto rendimiento.'
+},
+{
+    id: 83,
+    title: '🔔 Campana biker',
+    price: 4.99,
+    category: "moto",
+    img: 'https://img.kwcdn.com/product/fancy/6dca647e-33c3-47dd-9575-bac1f4a0f32f.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Esta campana biker es el accesorio emblemático y el regalo perfecto para cualquier motociclista, fabricada en aleación de metal de alta resistencia para durar miles de kilómetros. Cuenta con un diseño detallado y un aro metálico para una instalación rápida en el chasis, aportando un toque de estilo tradicional y distinción a la moto. Es un detalle compacto, duradero y cargado de significado, ideal para desear buenas rutas y protección en cada viaje.'
+},
+{
+    id: 84,
+    title: '⚡ CDI rácing de corte (6 pines)',
+    price: 19.45,
+    category: 'body',
+    img: 'https://img.kwcdn.com/product/fancy/1b2b558d-c7d1-44a6-9325-866defaf02bc.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Es un módulo CDI (Unidad de Encendido por Descarga de Condensador) de alto rendimiento, alimentado por corriente directa (DC) y con un conector de 6 pines, compatible con diversas motocicletas de baja cilindrada. Su función principal de carreras es eliminar el limitador de RPM de fábrica y optimizar la curva de avance, lo que resulta en una mejora del rendimiento y la velocidad máxima del motor.'
+},
+{
+    id: 85,
+    title: '✋ Embrague de freno',
+    price: 9.99,
+    category: 'body',
+    img: 'https://img.kwcdn.com/product/open/4867b768e22f484999e0ad230391ea26-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Este producto es generalmente un juego de palancas de control (embrague y/o freno delantero) fabricado en aluminio CNC o fundido. Están diseñados como un reemplazo de las palancas originales, a menudo incorporando un mecanismo de ajuste de posición de seis velocidades para personalizar la distancia entre la manigueta y el manillar, mejorando la ergonomía y la sensación de la conducción.'
+},
+{
+    id: 86,
+    title: '💡 Manigueta de freno con luz LED',
+    price: 12.99,
+  category: ["light", "body"],
+    img: 'https://img.kwcdn.com/product/fancy/389ce7a3-8f84-438d-a6cc-2aa964de00bb.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Se trata de una palanca de freno y/o embrague fabricado en metal (aluminio) que incorpora luces LED integradas en su estructura. Esta luz tiene una doble función: decoración y señalización, actuando como direccional intermitente para aumentar la visibilidad lateral de la motocicleta al momento de un giro.'
+},
+
+
+
+
+  {
+    "id": 87,
+    "title": "👩 Lifting de pestañas kit completo",
+    "price": 14.99,
+    "category": ["home", "woman"],
+    "img": "https://img.kwcdn.com/product/fancy/462c44d7-6e54-4d05-8fa0-33b8dab203f8.jpg?imageView2/2/w/800/q/70/format/avif",
+    "desc": "El set profesional de lifting de pestañas semipermanente con almohadillas de levantamiento, herramienta de limpieza y pegamento. Ideal para uso en salón y hogar, proporcionando permanente, fijación y nutrición de larga duración."
+  },
+  {
+    "id": 88,
+    "title": "✨ Maquina depiladora multiusos",
+    "price": 6.90,
+    "category": ["home", "woman"],
+    "img": "https://img.kwcdn.com/product/fancy/a973a180-956f-4241-b331-e4758e0411cf.jpg?imageView2/2/w/800/q/70/format/avif",
+    "desc": "Depiladora corporal multifuncional para mujer, recargable por USB. Dispositivo portátil para la depilación de piernas, axilas, brazos, nariz y cejas. Cuenta con cuchillas de acero inoxidable y un diseño ergonómico para uso doméstico."
+  },
+  {
+    "id": 89,
+    "title": "📽 Proyector HY300 cuenta Magis",
+    "price": 54.99,
+    "category": ["home", "electronics"],
+    "img": "https://img.kwcdn.com/product/open/eb0a7b73e93b4d568408bf56d7d12fae-goods.jpeg?imageView2/2/w/800/q/70/format/avif",
+    "desc": "Mini proyector portátil con WiFi y altavoz incorporado. Ofrece rotación de 180° para proyección en techo y cuenta con Android 11 para instalar aplicaciones de streaming. Su resolución nativa es HD 720P, compatible con 1080P HD y 4K, y mejora el entretenimiento con conectividad Bluetooth y HDMI."
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  id: 91,
+  title: "💡 Par luces proyectoras de alas angel",
+  price: 11.99,
+  category: ["lights", "body", "moto"],
+  img: "https://img.kwcdn.com/product/fancy/5e59dcba-3e48-450c-bfdd-11d514bdbfc1.jpg?imageView2/2/w/800/q/70/format/avif",
+  desc: "Juego de 2 luces LED proyectoras con diseño de alas de ángel para coche. Funcionan como luces de bienvenida al abrir o desbloquear el vehículo. Tienen ángulo de proyección ajustable y ofrecen una iluminación decorativa para el espejo retrovisor lateral."
+},
+{
+  id: 92,
+  title: "🏎️ Espejos retrovisores aleron (pequeño)",
+  price: 12.50,
+  category: ["body", "moto", "security"],
+  img: "https://img.kwcdn.com/product/fancy/f8d9ad44-a469-4698-8a9d-b59d8ee010dd.jpg?imageView2/2/w/800/q/70/format/avif",
+  desc: "Mini alerón trasero para coche, diseñado como decoración de ala. Fabricado en material ABS con apariencia de fibra de carbono. Mejora la estética deportiva y es un accesorio universal, fácil de instalar."
+},
+{
+  id: 93,
+  title: "🛵 Llaveros de moto clasica con motor de fricción",
+  price: 4.99,
+  category: ["moto"],
+  img: "https://img.kwcdn.com/product/fancy/c2d3f39d-5cab-47e0-a2a6-0e88ec30be5f.jpg?imageView2/2/w/800/q/70/format/aviff",
+  desc: "Llavero moto 3D estilo moto clásica en diferentes colores y diseños. Incluye mecanismo de motor de fricción, ideal como accesorio decorativo y de entretenimiento."
+},
+{
+    id: 94,
+    title: '🛡 Cubierta de llave Capitán América',
+    price: 5.49,
+  category: "moto",
+    img: 'https://img.kwcdn.com/product/open/0bcaf208a7164ee3af85f6052183373f-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Accesorio protector y estético para el botón de encendido (push-to-start), elaborado en aleación metálica resistente. Su diseño rinde homenaje al escudo del Capitán América.'
+},
+
+
+
+
+
+
+
+
+
+{
+  id: 95,
+  title: '🐰 Forro casco conejo malo',
+  price: 18.99,
+  category: ["helmet"],
+  img: 'https://img.kwcdn.com/product/fancyalgo/toaster-api/toaster-processor-image-cm2in/841264d8-9109-11ef-8610-0a580a699c58.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Forro es una funda universal de material de felpa o terciopelo suave, diseñada para cubrir el casco integral de motocicleta con un diseño temático de "conejo malo". Su función principal es decorativa para darle un toque divertido y original, a la vez que proporciona una capa de protección para evitar rayos y astillas en el casco cuando no está en uso.'
+},
+{
+  id: 96,
+  title: '🐲 Forro casco conejo mujer',
+  price: 18.99,
+  category: ["helmet"],
+  img: 'https://img.kwcdn.com/product/fancy/29898a6a-64d8-4c2a-b687-e793ce0277d4.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Funda decorativa y universal para casco de motocicleta, fabricada en material de felpa suave y resistente. Presenta un diseño temático de "conejo" con detalles distintivos. Ayuda a proteger la pintura del casco de pequeños daños y aumenta la visibilidad del motociclista en la carretera debido a su color y volumen.'
+},
+{
+  id: 97,
+  title: '🐉 Forro casco dragón',
+  price: 18.99,
+  category: ["helmet"],
+  img: 'https://img.kwcdn.com/product/fancy/424176c2-74d8-44e7-91fc-5b0d4ab1848a.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Funda universal de felpa o material suave y peludo, diseñada para cubrir el casco integral de la motocicleta. Este forro se distingue por su diseño de "dragón" con detalles como cuernos, escalas o colores llamativos. Es un accesorio puramente estético y divertido que proporciona una capa ligera para evitar rayos en el casco.'
+},
+{
+  id: 98,
+  title: '🎅 Forro casco papa Noel',
+  price: 17.99,
+  category: ["helmet"],
+  img: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/6d45521e75dfdbfea314f5359f51e982.jpg?imageView2/2/w/800/q/70/format/avif',
+  desc: 'Funda decorativa universal para casco de motocicleta, ideal para la temporada navideña. Está hecha de felpa roja y blanca y tiene el diseño de "Papá Noel" con barba y gorro. Su uso es meramente estético y lúdico, siendo fácil de colocar y retirar, y añade un elemento de alta visibilidad a la vez que protege la superficie del casco de daños superficiales.'
+},
+
+
+
+
+
+
+
+
+
+
+{
+  id: 99,
+  title: "💜 Kov Rick y Morty morado ABATIBLE",
+  price: 95.99,
+  category: ["cascos"],
+  img: "https://resources.sears.com.mx/products/cdn/producto_manual/10885/2025/6/24/galM2.jpg?scale=500&qlty=75",
+desc: "Casco SNOW Rick & Morty Galactic con diseño exclusivo inspirado en el multiverso. Combina estilo llamativo con protección confiable, ofreciendo una estructura resistente, interior cómodo y ventilación óptima para un uso prolongado. Ideal para quienes buscan destacar con un look único mientras conducen con seguridad."
+},
+{
+  id: 100,
+  title: "💙 Kov Rick y Morty azul ABATIBLE",
+  price: 95.99,
+  category: ["cascos"],
+  img: "https://product-media.cdn.t1.com/producto_manual/10885/2025/6/24/galA3.jpg",
+desc: "Casco SNOW Rick & Morty Galactic con diseño exclusivo inspirado en el multiverso. Combina estilo llamativo con protección confiable, ofreciendo una estructura resistente, interior cómodo y ventilación óptima para un uso prolongado. Ideal para quienes buscan destacar con un look único mientras conducen con seguridad."
+},
+{
+  id: 101,
+  title: "🔴 Bellbike Bel-6 Riuk matt rojo/blanco ABATIBLE",
+  price: 88.99,
+  category: ["cascos"],
+  img: "https://cdn.quicksell.co/-LzjJ-dD0_BE6E86zW2i/products/-Ok-cOcmGryq8aijhD7l.jpg",
+  desc: "Casco Bellbike BEL-6 Riuk en acabado mate rojo y blanco, diseñado para brindar protección y estilo deportivo en cada trayecto. Cuenta con estructura resistente de alta calidad, interior acolchado desmontable para mayor comodidad y sistema de ventilación que mantiene una temperatura adecuada durante el uso. Ideal para motociclistas que buscan seguridad, confort y un diseño moderno y llamativo."
+},
+{
+  id: 102,
+  title: "⚫ Bellbike Bel-1 matt gris oscuro INTEGRAL",
+  price: 88.99,
+  category: ["cascos"],
+  img: "https://cdn.quicksell.co/-LzjJ-dD0_BE6E86zW2i/products/-OjqHBZm8u9fyfd2CqCt.jpg",
+  desc: "Casco Bellbike BEL-1 en acabado mate gris oscuro, con diseño moderno y discreto ideal para uso diario. Fabricado con materiales resistentes que brindan una protección confiable, incorpora interior acolchado cómodo y sistema de ventilación eficiente para mayor frescura en trayectos largos Con certificacion ECE. Perfecto para motociclistas que buscan seguridad con un estilo elegante y minimalista."
+},
+{
+  id: 103,
+  title: "🏁 Bellbike Bel-4 negro matt INTEGRAL",
+  price: 93.99,
+  category: ["cascos"],
+  img: "https://cdn.quicksell.co/-LzjJ-dD0_BE6E86zW2i/products/-Ojq6_BryvWrO8A0Lzje.jpg",
+  desc: "Casco Bellbike BEL-4 en acabado negro mate con diseño sobrio y versátil, ideal para cualquier tipo de motociclista. Fabricado con materiales de alta resistencia que brindan protección confiable, cuenta con interior acolchado cómodo y sistema de ventilación eficiente para trayectos prolongados. Incluye certificación ECE, garantizando estándares de seguridad adecuados para su uso en carretera."
+},
+{
+  id: 104,
+  title: "🌸 Bellbike Bel-4 star gloss blanco/rosado INTEGRAL",
+  price: 95.99,
+  category: ["cascos"],
+  img: "https://cdn.quicksell.co/-LzjJ-dD0_BE6E86zW2i/products/-Ojq6VQtsezEwSCpLtKS.jpg",
+  desc: "Casco Bellbike BEL-4 Star Gloss en combinación blanco y rosado con acabado brillante, diseñado para destacar con un estilo moderno y llamativo. Su estructura resistente brinda protección confiable, mientras que el interior acolchado asegura comodidad durante todo el recorrido. Incorpora sistema de ventilación eficiente para mayor frescura y cuenta con certificación ECE, garantizando seguridad para uso en carretera."
+},
+
+{
+  id: 105,
+  title: "🔴 Bellbike Bel-4 star gloss rojo INTEGRAL",
+  price: 95.99,
+  category: ["cascos"],
+  img: "https://cdn.quicksell.co/-LzjJ-dD0_BE6E86zW2i/products/-Ojq6Tjlhd6bZ0Pvf3Wb.jpg",
+  desc: "Casco Bellbike BEL-4 Star Gloss en color rojo con acabado brillante, diseñado para ofrecer un estilo deportivo y llamativo en cada recorrido. Su estructura resistente brinda protección confiable, mientras que el interior acolchado proporciona comodidad durante el uso prolongado. Cuenta con sistema de ventilación eficiente para una mejor circulación de aire y certificación ECE, garantizando seguridad para conducción en carretera."
+},
+{
+  id: 106,
+  title: "🩶 Bellbike Bel-4 star negro/gris INTEGRAL",
+  price: 95.99,
+  category: ["cascos"],
+  img: "https://imagedelivery.net/0tt38OLkrSmHRt7hdItWEA/442e0e16-7a38-4407-71f0-10e94738b500/public",
+  desc: "Casco Bellbike BEL-4 Star en combinación negro y gris con diseño moderno y elegante, ideal para quienes buscan un estilo sobrio pero deportivo. Fabricado con materiales resistentes que brindan alta protección, cuenta con interior acolchado para mayor comodidad y sistema de ventilación que mantiene una buena circulación de aire durante el uso. Incluye certificación ECE, garantizando seguridad y confianza para conducción en carretera."
+},
+{
+  id: 107,
+  title: "🏁 Bellbike Bel-4 negro/blanco mate INTEGRAL",
+  price: 93.99,
+  category: ["cascos"],
+  img: "https://cdn.quicksell.co/-LzjJ-dD0_BE6E86zW2i/products/-O_K0-0cdlfn-VXGZiia.jpg",
+  desc: "Casco Bellbike BEL-4 en combinación negro y blanco con acabado mate, diseñado para ofrecer un estilo moderno y deportivo. Fabricado con materiales resistentes que brindan protección confiable, cuenta con interior acolchado para mayor comodidad y sistema de ventilación que mantiene una adecuada circulación de aire en todo momento. Incluye certificación ECE, garantizando seguridad y rendimiento óptimo para conducción en carretera."
+},
+{
+  id: 108,
+  title: "⚫ Bellbike Bel-3 negro mate (visor espejo) INTEGRAL",
+  price: 82.99,
+  category: ["cascos"],
+  img: "https://i.postimg.cc/L66sN7Mk/Gemini-Generated-Image-ua0l9sua0l9sua0l.png",
+  desc: "Casco Bellbike BEL-3 en combinación negro y gris con visor tornasol que aporta un estilo moderno y llamativo. Diseñado para ofrecer protección confiable, cuenta con estructura resistente, interior acolchado para mayor comodidad y sistema de ventilación que mantiene una adecuada circulación de aire. Incluye certificación ECE, garantizando seguridad y rendimiento óptimo en cada trayecto."
+},
+{
+  id: 109,
+  title: "⚫ Bellbike Bel-3 negro/gris (visor tornasol) INTEGRAL",
+  price: 82.99,
+  category: ["cascos"],
+  img: "https://cdn.quicksell.co/-LzjJ-dD0_BE6E86zW2i/products/-O_wVFzGjzqH22AObUUK.jpg",
+  desc: "Casco Bellbike BEL-3 en combinación negro y gris con visor tornasol que brinda un estilo moderno y llamativo. Diseñado con estructura resistente para una protección confiable, incorpora interior acolchado que ofrece comodidad durante el uso prolongado y sistema de ventilación que mantiene una adecuada circulación de aire. Su visor tornasol ayuda a reducir el deslumbramiento, y cuenta con certificación ECE, garantizando seguridad para conducción en carretera."
+},
+{
+  id: 110,
+  title: "⚪ Kov Thunder waves blanco ABATIBLE",
+  price: 83.99,
+  category: ["cascos"],
+  img: "https://http2.mlstatic.com/D_NQ_NP_697239-MLM84767655487_052025-O.webp",
+  desc: "Casco KOV Thunder Waves en color blanco con diseño moderno y detalles dinámicos que resaltan su estilo deportivo. Fabricado con materiales resistentes que ofrecen protección confiable, cuenta con interior acolchado para mayor comodidad y sistema de ventilación que mejora la circulación del aire durante el uso. Incluye certificación ECE, garantizando seguridad adecuada para conducción en carretera."
+},
+
+{
+  id: 111,
+  title: "🦇 Kov abatible Zero Batman gris ABATIBLE",
+  price: 93.99,
+  category: ["cascos"],
+  img: "https://http2.mlstatic.com/D_NQ_NP_917415-MLU78201447425_082024-O.webp",
+  desc: "Casco KOV abatible Zero Batman en color gris con diseño inspirado en el icónico estilo del héroe, ideal para quienes buscan destacar con un look único. Cuenta con sistema abatible que brinda mayor practicidad y comodidad en el uso diario, además de una estructura resistente que ofrece protección confiable. Su interior acolchado y sistema de ventilación aseguran confort en trayectos prolongados. Incluye certificación DOT, garantizando seguridad para conducción en carretera."
+},
+{
+  id: 112,
+  title: "🎨 Ich 3120 (diseños) ABATIBLE",
+  price: 48.95,
+  category: ["cascos"],
+  img: "https://i.postimg.cc/m2th9VtM/ich-3120.png",
+  desc: "Casco ICH 3120 con diseños llamativos y modernos, ideal para quienes buscan un estilo único sin dejar de lado la seguridad. Fabricado con materiales resistentes que brindan protección confiable, cuenta con interior acolchado para mayor comodidad y sistema de ventilación que favorece la circulación de aire durante el uso. Incluye certificación DOT, garantizando estándares adecuados de seguridad para conducción en carretera."
+},
+{
+  id: 113,
+  title: "🎨 Ich 3110 (diseños) ABATIBLE",
+  price: 42.00,
+  category: ["cascos"],
+  img: "https://i.postimg.cc/g0dYgKkN/3110.png",
+  desc: "Casco ICH 3110 con diseños modernos y llamativos, ideal para quienes buscan destacar con estilo sin sacrificar seguridad. Fabricado con materiales resistentes que ofrecen protección confiable, cuenta con interior acolchado para mayor comodidad y sistema de ventilación que mejora la circulación de aire durante el uso. Incluye certificación DOT, garantizando estándares adecuados de seguridad para conducción en carretera."
+},
+{
+  id: 114,
+  title: "⚫ Ich 3110 negro mate",
+  price: 38.99,
+  category: ["cascos"],
+  img: "https://luegopagocdn.azureedge.net/content-process/products-images/prod/612/37bb3245-b611-417c-9cbf-ca44042ebf9e.webp",
+  desc: "Casco ICH 3110 en color negro mate con diseño sobrio y elegante, ideal para uso diario. Fabricado con materiales resistentes que brindan protección confiable, incorpora interior acolchado para mayor comodidad y sistema de ventilación que permite una adecuada circulación de aire durante el recorrido. Incluye certificación DOT, garantizando estándares de seguridad para conducción en carretera."
+},
+{
+  id: 115,
+  title: "⚫ Ich 3110 negro mate",
+  price: 43.99,
+  category: ["cascos"],
+  img: "https://motorepuestos4v.com/wp-content/uploads/erp/productos/46010013/photoroom_20221115_171327.jpg",
+  desc: "Casco ICH 3110 en acabado negro mate con diseño sobrio y moderno, ideal para uso diario y conducción urbana. Fabricado con materiales resistentes que brindan protección confiable, incorpora interior acolchado para mayor comodidad y sistema de ventilación que permite una adecuada circulación de aire durante el uso. Su estilo minimalista combina fácilmente con cualquier equipo, y cuenta con certificación ECE, garantizando seguridad para conducción en carretera."
+},
+{
+  id: 116,
+  title: "🪖 Neo Bellator (varios diseños) ABATIBLE",
+  price: 54.99,
+  category: ["cascos"],
+  img: "https://i.postimg.cc/mZFpXWz7/bell.png",
+  desc: "Casco Neo Bellator abatible con varios diseños modernos y llamativos, ideal para quienes buscan estilo y practicidad en un solo producto. Su sistema abatible permite mayor comodidad al conducir en ciudad, facilitando el uso diario. Cuenta con estructura resistente que brinda protección confiable, interior acolchado para mayor confort y sistema de ventilación que mejora la circulación de aire. Incluye certificación DOT, garantizando seguridad adecuada para conducción en carretera."
+},
+{
+  id: 117,
+  title: "🔴 Kov abatible Stark It rojo ABATIBLE",
+  price: 86.99,
+  category: ["cascos"],
+  img: "https://kovparts.com/cdn/shop/files/STARKITCASCODEMOTOCICLISTAABATIBLEDOTKOVBRILLOSO_1.png?v=1755011827&width=2048",
+  desc: "Casco KOV abatible Stark It en color rojo con acabado brillante, diseñado para ofrecer practicidad y estilo en cada recorrido. Su sistema abatible permite mayor comodidad al conducir en ciudad, mientras que su estructura resistente brinda protección confiable. Incorpora interior acolchado para mayor confort y ventilación eficiente para mantener una buena circulación de aire. Cuenta con certificación DOT, garantizando seguridad para uso en carretera."
+},
+{
+    id: 118,
+    title: '🏹 Pasamontañas tejido bandolero',
+    price: 5.49,
+    category: ["helmet","clothes"],
+    img: 'https://img.kwcdn.com/product/fancy/599ee4f6-cea2-4a09-b998-392c35dc271c.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Pasamontañas de tejido más grueso (lana acrílica o mezcla), diseñadas para ofrecer gran protección térmica en condiciones de frío extremo. Su material más denso está optimizado para aislar el calor en la cabeza y cuello, siendo ideal para climas fríos y conducción invernal.'
+},
+
+{
+    id: 119,
+    title: '🧥 Hoodie biker algodón urbano',
+    price: 14.99,
+    "category": ["clothes", "home", "moto"],
+    img: 'https://i.postimg.cc/tRnb0drs/20260512-173853.jpg',
+    desc: 'Hoodie biker de algodón suave y resistente, diseñado para brindar comodidad y abrigo en uso diario. Su estilo urbano combina perfectamente con outfits moteros y conducción en clima fresco.'
+},
+
+{
+    id: 120,
+    title: '🌧️ Impermeable premium completo con zapatos',
+    price: 28.99,
+    "category": ["clothes", "home", "moto", "security"],
+    img: 'https://i.postimg.cc/K8SB75Wr/1778627268743.png',
+    desc: 'Impermeable biker de alta calidad con malla interna transpirable y cobertura protectora para zapatos. Incluye botones de anclaje para un ajuste firme entre pantalón, abrigo y calzado, ofreciendo mayor protección y estabilidad en lluvia intensa.'
+},
+{
+    id: 121,
+    title: '☔ Impermeable contruccion resistente y ligera',
+    price: 23.99,
+    "category": ["clothes", "home", "moto", "security"],
+    img: 'https://i.postimg.cc/y8LfLtCf/1778628396796.png',
+    desc: 'Impermeable biker fabricado con material resistente al agua y al viento, ideal para conducción bajo lluvia moderada o intensa. Su diseño ligero y cómodo brinda buena protección corporal y libertad de movimiento durante el trayecto.'
+},
+{
+    id: 122,
+    title: '🪽 Espejos retrovisores fibra de carbono alas aerodinámicos',
+    price: 17.49,
+    category: ["body", "moto", "security"],
+    img: 'https://img.kwcdn.com/product/open/923cca529170469f90a928f28e7a17d7-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Espejos para motocicleta con diseño tipo ala aerodinámica y acabado estilo fibra de carbono. Su estructura moderna mejora la estética deportiva de la moto mientras ofrece buena visibilidad y resistencia para uso diario.'
+},
+{
+    id: 123,
+    title: '🔩 Espejos retrovisores scrambler manillar',
+    price: 14.99,
+    category: ["body", "moto", "security"],
+    img: 'https://img.kwcdn.com/product/fancy/647448b4-ec3d-4daf-89f2-ffb3bb93f340.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Espejos retrovisores para manillar con estilo scrambler y acabado moderno. Diseñados para brindar buena visibilidad, resistencia y un look clásico deportivo ideal para motos urbanas y personalizadas.'
+},
+{
+    id: 124,
+    title: '🌈 Espejos retrovisores tornasol alas aerodinámicos',
+    price: 21.49,
+    category: ["body", "moto", "security"],
+    img: 'https://img.kwcdn.com/product/fancy/e17d55d2-2f51-4a02-8244-d83262e615cd.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Espejos retrovisores universales con diseño tipo ala deportiva y amplio campo de visión. Fabricados para ofrecer estabilidad, buena visibilidad y una apariencia moderna ideal para motocicletas urbanas y todoterreno.'
+},
+{
+    id: 125,
+    title: '🪽 Espejos retrovisor alerón amplia visión',
+    price: 17.49,
+    category: ["body", "moto", "security"],
+    img: 'https://img.kwcdn.com/product/open/582b730d87a0426f914a5bb87ddd2ab5-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Juego de espejos retrovisores tipo alerón fabricados en aluminio CNC con diseño deportivo y visión amplia. Incluyen ajuste universal y hardware de instalación, ideales para mejorar la estética y visibilidad en motocicletas deportivas.'
+},
+{
+    id: 126,
+    title: '⚙️ Rotor de lujo magneto para moto premium',
+    price: 17.99,
+    category: ["body", "moto"],
+    img: 'https://img.kwcdn.com/product/fancy/33dba707-934c-4f2d-81b9-bd55b380e11e.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Protector universal tipo magneto fabricado en aleación de aluminio CNC de alta resistencia. Diseñado para proteger el sistema de ventilación y radiador del motor, aportando un acabado deportivo premium y fácil instalación.'
+},
+
+
+{
+    id: 127,
+    title: '🕸️ Red elastica multiusos para carga',
+    price: 4.75,
+    category: ["moto", "helmet", "body"],
+    img: 'https://img.kwcdn.com/product/fancy/1c132227-7afe-4a26-9605-56a075024826.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Red elástica multiusos de 30 cm diseñada para asegurar cascos, mochilas y equipaje en motocicletas o bicicletas. Su estructura resistente y flexible brinda una sujeción firme y práctica durante cualquier trayecto.'
+},
+{
+    id: 128,
+    title: '🥽 Goggles motocross lente panorámico (negro puro)',
+    price: 5.49,
+    category: ["moto", "helmet", "body"],
+    img: 'https://img.kwcdn.com/product/fancy/049a50f1-66e9-4787-86e6-f09e3e02b826.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Goggles para motocross con lente panorámico de gran tamaño y diseño antigoteo. Ideales para conducción todoterreno, ofreciendo mejor visibilidad, protección contra viento y ajuste cómodo para uso prolongado.'
+},
+
+{
+    id: 129,
+    title: '🔔 Alarma para moto con boton de encendido y apagado a distancia',
+    price: 23.50,
+    category: ["security"],
+    img: 'https://image.made-in-china.com/2f0j00aDoqKBLPHQud/Smart-APP-Remote-Control-Engine-Start-Stop-Push-Button-Alarm-Key-Anti-Theft-One-Way-Motorcycle-Alarm-System.webp',
+    desc: 'Sistema de alarma antirrobo para motocicleta con control remoto inteligente, función de encendido y apagado a distancia y botón de arranque. Diseñado para brindar mayor seguridad y comodidad en el uso diario.'
+},
+{
+    id: 130,
+    title: '💡 Luces direccionales multicolor con proyector en el suelo',
+    price: 14.99,
+    category: ["body", "lights", "security"],
+    img: 'https://img.kwcdn.com/product/open/5d76805873a1401583396bd435141cd4-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Luces direccionales LED para motocicleta con efecto de flujo secuencial y proyección de color. Diseñadas para mejorar la visibilidad, seguridad y apariencia moderna de la moto durante conducción diurna y nocturna.'
+},
+{
+    id: 131,
+    title: '📷 Cámara deportiva 4K ultra HD',
+    price: 26.99,
+    category: ["helmet","phone", "moto"],
+    img: 'https://http2.mlstatic.com/D_NQ_NP_896733-MLA99371712650_112025-O.webp',
+    desc: 'Cámara deportiva 4K con lente gran angular de 170°, conexión Wi-Fi y estabilización digital. Su diseño compacto y resistente la hace ideal para motociclistas, ciclismo, aventuras y grabación de rutas en alta definición.'
+},
+{
+    id: 132,
+    title: '📱 CarPlay para moto anti agua con doble cámara y aplicacion de descarga',
+    price: 119.99,
+    category: ["body", "carplay"],
+    img: 'https://i.postimg.cc/3r16Cf13/Gemini-Generated-Image-t2znsmt2znsmt2zn.png',
+    desc: 'Pantalla portátil de 5 pulgadas para motocicleta con CarPlay y Android Auto inalámbrico, resistencia al agua IP67 y navegación GPS. Incluye doble cámara HD, reproducción multimedia y aplicación móvil para descargar y gestionar videos directamente desde el celular.'
+},
+{
+    id: 133,
+    title: '🧣 Pasamontañas de licra transpirable',
+    price: 4.49,
+    category: ["helmet","clothes"],
+    img: 'https://i.postimg.cc/q7bNcr8q/71p-AJRUI-p-L-AC-UY1000.jpg',
+    desc: 'Pasamontañas transpirable ideal para proteger el rostro del sol, viento y polvo durante actividades al aire libre. Su diseño ligero evita acumulación de calor y humedad en la boca y nariz, brindando mayor comodidad bajo el casco.'
+},
+{
+    id: 134,
+    title: '🥷 Pasamontañas de licra ninja',
+    price: 3.99,
+    category: ["helmet","clothes"],
+    img: 'https://img.kwcdn.com/product/fancy/e51180fd-7635-4d03-ab41-4c584aeb2aec.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Pasamontañas de licra transpirable ideal para proteger el rostro del sol, viento y polvo durante actividades al aire libre. Su diseño ligero evita acumulación de calor y humedad en la boca y nariz, brindando mayor comodidad bajo el casco con estilo tipo ninja.'
+},
+
+ {
+    id: 135,
+    title: '🎼 K08 Audifonos Bluetooth',
+    price: 23.99,
+    category: "headsets",
+    img: 'https://img.kwcdn.com/product/open/3f6b5b29d6df4b67afd14ca9da870ce8-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Incluyen linterna y radio FM, utilizan Bluetooth 5.3 para ofrecer una conexión estable, rápida y eficiente en el consumo de energía. El K08 está diseñado para proporcionar un sonido estéreo de alta calidad con graves profundos. Incorpora tecnología de cancelación de ruido ambiental (ENC) en el micrófono, mejorando la claridad de las llamadas. Además, cuentan con un diseño ergonómico para un ajuste seguro y controles táctiles intuitivos para manejar la música y las llamadas.'
+  },
+  {
+    id: 136,
+    title: '🎹 Auriculares Bluetooth Y30',
+    price: 22.49,
+    category: "headsets",
+    img: 'https://img.kwcdn.com/product/open/ed9c9f0162d740628c4f4e259df3f915-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Los audífonos Y30 son un modelo TWS que garantiza una experiencia de sonido inmersiva, destacando por su potente rendimiento de bajos y su audio Hi-Fi. Utilizan Bluetooth 5.0 para asegurar una transmisión de señal confiable. Son ideales para actividades deportivas o uso diario, ya que poseen una clasificación de resistencia al agua IPX5, que los protege eficazmente contra el sudor y las salpicaduras de lluvia.'
+  },
+
+  {
+    id: 137,
+    title: '🎧 Audifonos Bluetooth Y12',
+    price: 21.99,
+    category: "headsets",
+    img: 'https://img.kwcdn.com/product/open/12d3f7fb465e4ce0bef183b6d2c10903-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Los audífonos Y12 son un sistema de sonido básico y económico para casco, diseñado principalmente para escuchar música estéreo y recibir llamadas manos libres mientras se conduce. Utiliza la tecnología Bluetooth 5.0 para una conexión estable. El dispositivo incorpora un micrófono con cancelación de eco y ruido para mejorar la claridad de las llamadas y es fácil de instalar en la mayoría de los cascos, siendo resistente al agua.'
+  },
+  {
+    id: 138,
+    title: '🎧 Audifonos Bluetooth K15',
+    price: 21.20,
+    category: "headsets",
+    img: 'https://img.kwcdn.com/product/fancy/8223c25b-43d2-42de-8b54-f2d98e5f7ad3.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Modelo de audífonos Bluetooth para casco. Un sistema de audio manos libres que se instala dentro del casco para escuchar música y recibir llamadas. Resistencia básica al agua y fácil instalación.'
+  },
+{
+    id: 139,
+    title: '⚡ CDI de 9 Mapas Racing',
+    price: 22.99,
+    category: ["body"],
+    img: 'https://img.kwcdn.com/product/fancy/44d82854-6681-4cb8-b29f-0d253bd1ac21.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'CDI Racing de 9 mapas programables diseñado para optimizar el rendimiento y la respuesta del motor. Permite seleccionar diferentes configuraciones de encendido según el tipo de conducción, mejorando la aceleración y el desempeño en distintas condiciones. Fabricado con componentes de alta calidad para ofrecer una chispa más estable y un funcionamiento confiable.'
+},
+
+{
+    id: 140,
+    title: '💡 Cubre Puños con Luz Direccional',
+    price: 17.99,
+    category: ["body", "moto"],
+    img: 'https://img.kwcdn.com/product/open/2024-05-25/1716614999197-784873e0df6748758a3fa5a82cb4ceec-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Cubre puños diseñados para brindar mayor protección a las manos contra el viento, la lluvia y pequeños impactos durante la conducción. Incorporan luces direccionales LED integradas que aumentan la visibilidad y seguridad en carretera, especialmente durante la noche o en condiciones de baja iluminación. Su diseño resistente y moderno aporta un estilo deportivo a cualquier motocicleta.'
+},
+{
+    id: 141,
+    title: '🛡️ Cubre Puños de Aluminio',
+    price: 11.00,
+    category: ["body", "moto"],
+    img: 'https://img.kwcdn.com/product/fancy/6e1d0c2b-d61d-429f-9d2e-40636e4be664.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Cubre puños fabricados con estructura de aleación de aluminio y acabado tipo fibra de carbono, diseñados para proteger las manetas de freno y embrague ante caídas, golpes y ramas durante la conducción. Su diseño ligero, resistente y aerodinámico ofrece una excelente combinación de protección y estilo, ideal tanto para uso urbano como para rutas de aventura y todoterreno.'
+},
+
+{
+    id: 142,
+    title: '✨ Cubre Puños de Lujo',
+    price: 12.00,
+    category: ["body", "moto"],
+    img: 'https://img.kwcdn.com/product/open/3a822047c8a343f4b2f244d5a1abde5b-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Cubre puños de lujo diseñados para ofrecer una mayor protección contra el viento, la lluvia y el polvo durante la conducción. Su diseño envolvente ayuda a reducir el impacto del aire en las manos, mejorando la comodidad en trayectos largos. Fabricados con materiales resistentes y un acabado elegante, aportan un estilo moderno y una protección adicional para cualquier motocicleta.'
+},
+
+{
+    id: 143,
+    title: '🏁 Cubre Puños de Aluminio CNC',
+    price: 12.99,
+    category: ["body", "moto"],
+    img: 'https://img.kwcdn.com/product/fancy/41696c63-7284-421e-94d6-b72f82f2dc10.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Cubre puños universales fabricados en aleación de aluminio CNC, diseñados para brindar una mayor protección a las manos y manetas frente al viento, ramas, piedras y pequeños impactos. Su estructura resistente y ligera ofrece durabilidad sin añadir peso innecesario a la motocicleta, mientras que su diseño deportivo realza la estética y mejora la experiencia de conducción en ciudad o carretera.'
+},
+
+{
+    id: 144,
+    title: '🦶 Cubierta de Goma para Pedal de Cambio',
+    price: 3.00,
+    category: ["body", "moto", "clothes"],
+    img: 'https://img.kwcdn.com/product/open/2023-07-04/1688439926315-d31738d7003b47edbad232016b9c6f30-goods.jpeg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Cubierta de goma para pedal de cambio diseñada para mejorar el agarre y la comodidad al conducir. Ayuda a proteger el calzado del desgaste causado por los cambios de marcha, además de proporcionar una superficie antideslizante para un manejo más seguro. Fabricada con material resistente y flexible, es fácil de instalar y compatible con una amplia variedad de motocicletas.'
+},
+{
+    id: 145,
+    title: '🦶 Cubierta para Pedal de Cambio',
+    price: 2.50,
+    category: ["body", "moto", "clothes"],
+    img: 'https://img.kwcdn.com/product/fancy/b8c6866e-69bb-4ee7-91dc-016443854225.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Cubierta de goma sintética para pedal de cambio, diseñada para ofrecer un mejor agarre y una experiencia de conducción más cómoda. Su textura antideslizante ayuda a mejorar el control al cambiar de marcha, mientras protege el calzado del desgaste y rayaduras. Fabricada con material resistente y duradero, es compatible con una amplia variedad de motocicletas y ATV.'
+},
+{
+    id: 146,
+    title: '👢 Cubierta de Zapato para Pedal de Cambio',
+    price: 3.50,
+    category: ["body", "moto", "clothes"],
+    img: 'https://img.kwcdn.com/product/fancy/191abb90-3a9a-4eb8-a84a-e7eaccf84f84.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Protector ajustable para calzado diseñado para evitar el desgaste y las marcas causadas por el pedal de cambio. Su superficie antideslizante proporciona mayor control al cambiar de marcha, mientras que su material resistente ofrece durabilidad para uso diario, rutas largas y conducción deportiva. Fácil de colocar y compatible con la mayoría de botas y zapatos para motociclista.'
+},
+
+{
+    id: 147,
+    title: '🔒 Candado con Alarma para Moto en plastico reforzado',
+    price: 7.99,
+    category: ["security"],
+    img: 'https://fainsa.com.ec/wp-content/uploads/2022/06/candado-con-alarma-seguridad-para-motocicleta-Fainsa.jpeg',
+    desc: 'Candado de seguridad con alarma integrado, diseñado para brindar una protección adicional contra intentos de robo. Su sistema de alarma sonora se activa al detectar movimientos o forcejeos, alertando de inmediato cualquier intento de manipulación. Fabricado en plástico reforzado resistente a la lluvia y la corrosión, incluye 3 llaves y una batería de larga duración para una protección confiable en el día a día.'
+},
+
+{
+    id: 148,
+    title: '🔒 Candado con Alarma para Moto en Acero',
+    price: 14.50,
+    category: ["security"],
+    img: 'https://heavenstorage.blob.core.windows.net/storageheavenimagenes/76b7ef96-550b-4e50-995b-c5d25d2507f9/images/v2/OTROS/49922_large.jpg?sp=r&st=2025-06-19T02:11:26Z&se=2035-06-19T10:11:26Z&spr=https&sv=2024-11-04&sr=c&sig=JTrpEXutEZPdfvCaeQXMhkVlHyRxzKHHZRKwJAxxoq8%3D',
+    desc: 'Candado de seguridad fabricado en acero reforzado con alarma integrada, diseñado para ofrecer una protección superior contra intentos de robo. Su potente alarma sonora se activa al detectar movimientos o manipulaciones no autorizadas, alertando de inmediato cualquier intento de forcejeo. Resistente a la lluvia y la corrosión, incluye llaves de seguridad y una batería de larga duración, convirtiéndose en una excelente opción para proteger tu motocicleta en cualquier lugar.'
+},
+{
+    id: 149,
+    title: '⛓️ Candado de Cadena para Moto Reforzado',
+    price: 6.49,
+    category: ["security"],
+    img: 'https://http2.mlstatic.com/D_Q_NP_2X_951993-MLU77167203114_072024-T.webp',
+    desc: 'Candado de cadena reforzado diseñado para brindar mayor seguridad a motocicletas, bicicletas y scooters. Su estructura resistente cuenta con un recubrimiento plástico que ayuda a proteger la pintura de rayones y desgaste. Ligero, flexible y fácil de transportar, incluye 2 llaves de seguridad y un diseño práctico ideal para el uso diario, tanto en interiores como exteriores.'
+},
+
+{
+    id: 150,
+    title: '🔧 Dado Castillo Doble Punta 26/28 mm',
+    price: 7.99,
+    category: ["body"],
+    img: 'https://resources.sears.com.mx/medios-plazavip/t1/1739043671b3d96ef8caa340b682e7b6cae43f59bf?scale=500&qlty=75',
+    desc: 'Dado castillo de doble punta 26/28 mm fabricado para facilitar el desmontaje e instalación de tuercas tipo castillo en motocicletas. Su diseño de doble medida lo hace práctico y versátil para trabajos de mantenimiento, ofreciendo un ajuste preciso y mayor comodidad durante el uso. Fabricado con materiales resistentes para soportar el uso frecuente en talleres y reparaciones mecánicas.' 
+},
+
+{
+    id: 151,
+    title: '🔧 Extractor de Magneto o Campana',
+    price: 7.99,
+    category: ["body"],
+    img: 'https://www.vmingo.com.mx/cdn/shop/files/6f83e060e1c5cb91d79f80afdf7a9b7e.jpg?v=1754602589&width=1445',
+    desc: 'Herramienta especializada para desmontar de forma segura el magneto o campana de la motocicleta durante trabajos de mantenimiento y reparación. Fabricada en acero de alta resistencia, permite extraer la pieza sin dañar el cigüeñal ni los componentes del sistema de encendido. Su diseño preciso facilita el trabajo mecánico y la convierte en una herramienta indispensable para talleres y motociclistas.' 
+},
+
+
+{
+    id: 152,
+    title: '🎀 Moños-lazos para Casco de lujo',
+    price: 9.75,
+    category: ["helmet"],
+    img: 'https://img.kwcdn.com/product/fmket/5cbd95183401b27e9f44604109f25c11.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Moño decorativo para casco diseñado para darle un estilo único y llamativo a tu equipamiento. Su tamaño grande mejora la visibilidad en la vía, mientras que su estructura ligera y acolchonada permite una instalación sencilla sin afectar la comodidad. Ideal para personalizar tu casco de forma original, disponible en varios colores como verde agua, rojo, morado y lila.'
+},
+
+{
+    id: 153,
+    title: '😈 Alerón Cuernito para Casco Hombre',
+    price: 15.99,
+    category: ["helmet"],
+    img: 'https://img.kwcdn.com/product/fancy/d41f26f5-7266-41e4-86a8-1fe7c4c70609.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Accesorio decorativo para casco con diseño de alerón y cuernos, ideal para quienes buscan un estilo deportivo y agresivo en sus rutas. Fabricado con materiales ligeros y resistentes, se instala fácilmente mediante adhesivo de alta fijación sin necesidad de perforaciones. Su diseño universal es compatible con la mayoría de cascos integrales y abatibles.'
+},
+{
+    id: 154,
+    title: '💡 Tira de Luz Neón Flexible USB',
+    price: 11.99,
+    category: ["light", "body", "security", "lights"],
+    img: 'https://img.kwcdn.com/product/fancy/553489f6-a776-44c0-93eb-c75e33a9d605.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Tira de luz neón flexible con alimentación USB, ideal para personalizar motocicletas, automóviles y otros proyectos decorativos. Su iluminación uniforme y llamativa crea un efecto moderno y atractivo durante la noche, mientras que su diseño flexible permite instalarla fácilmente en diferentes superficies y contornos. Fabricada con materiales resistentes y de bajo consumo energético para una iluminación duradera y segura.'
+},
+
+{
+    id: 155,
+    title: '🚁 Muñeco Doraemon con Hélice y Luces',
+    price: 5.99,
+    category: ["moto", "body"],
+    img: 'https://i5.walmartimages.com/asr/a2bf72a9-5a1c-440d-8315-d452b9231e57.7223788244dd30187199f4ccf2a7ff0c.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF',
+    desc: 'Divertido accesorio decorativo de Doraemon para motocicletas y bicicletas. Cuenta con una hélice giratoria y luces integradas que crean un efecto llamativo durante la conducción. Su diseño compacto y ligero permite instalarlo fácilmente en diferentes partes de la moto, aportando un toque original, divertido y lleno de personalidad a tus rutas.'
+},
+{
+    id: 156,
+    title: '✈️ Avión con Hélice y Luces LED',
+    price: 5.99,
+    category: ["moto", "body"],
+    img: 'https://ae-pic-a1.aliexpress-media.com/kf/Sf9598d5d7ab94ff5ba67917522b0f9285.jpg_960x960.jpg',
+    desc: 'Original accesorio decorativo en forma de avión para motocicletas y bicicletas. Su hélice gira con el viento mientras está en movimiento y activa luces LED de colores, creando un efecto llamativo tanto de día como de noche. Fabricado con materiales ligeros y resistentes, es fácil de instalar y perfecto para personalizar tu vehículo con un estilo único y divertido.'
+},
+
+{
+    id: 157,
+    title: '👼 Alas Ángel para Casco',
+    price: 4.99,
+    category: ["helmet"],
+    img: 'https://img.kwcdn.com/product/fancy/02070015-845e-4b95-adbc-ee970088dd0d.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Alas decorativas 3D para casco diseñadas para darle un estilo único y llamativo a tu equipamiento. Fabricadas con materiales ligeros y resistentes, cuentan con sistema de fijación removible que facilita su instalación y retiro sin dañar el casco. Ideales para personalizar cascos MT y otros modelos compatibles, aportando un toque original y elegante en cada ruta.'
+},
+
+{
+    id: 158,
+    title: '👀 Panel de Ojos LED para Moto',
+    price: 8.99,
+    category: ["body", "lights"],
+    img: 'https://img.kwcdn.com/product/fancy/858dff7d-6c17-4578-9a1f-648458c480c6.jpg?imageView2/2/w/800/q/70/format/avif',
+    desc: 'Kit de luces LED de 12V con diseño tipo ojos de serpiente, ideal para personalizar la apariencia de motocicletas, scooters y triciclos. Proporciona una iluminación uniforme y llamativa que mejora la estética del vehículo tanto de día como de noche. Su diseño compacto facilita la instalación en faros o carenados, ofreciendo un estilo deportivo y moderno para destacar en cada ruta.'
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function limpiarTexto(texto) {
+  return texto
+    .toLowerCase()
+    .normalize("NFD")                     // separa letras de tildes
+    .replace(/[\u0300-\u036f]/g, "")      // elimina tildes
+    .replace(/[^\w\s]/g, " ")             // elimina emojis y símbolos
+    .replace(/\s+/g, " ")                 // evita espacios dobles
+    .trim();
+}
+
+function similitud(a, b) {
+  a = limpiarTexto(a);
+  b = limpiarTexto(b);
+
+  let coincidencias = 0;
+  const max = Math.max(a.length, b.length);
+
+  for (let i = 0; i < max; i++) {
+    if (a[i] === b[i]) coincidencias++;
+  }
+
+  return coincidencias / max;
+}
+
+/* ===================== GENERAR DESCUENTO TEMU AUTOMÁTICO ===================== */
+products.forEach(p => {
+  if (!p.original) {
+    const aumento = Math.random() * (0.60 - 0.20) + 0.20;  // entre 20% y 60%
+    p.original = Number((p.price * (1 + aumento)).toFixed(2));
+  }
+});
+
+
+
+
+
+/* ===================== IMAGEN ZOOM ===================== */
+
+const imageViewer = document.getElementById("imageViewer");
+const viewerImg = document.getElementById("viewerImg");
+
+/* ===================== ABRIR ZOOM ===================== */
+document.addEventListener("click", (e) => {
+
+  /* 🔥 ZOOM DESDE MODAL */
+  if(e.target.id === "zoomBtn"){
+
+    const modalImage =
+      document.querySelector("#modalImg img");
+
+    viewerImg.src = modalImage.src;
+
+    imageViewer.style.display = "flex";
+
+    return;
+  }
+
+  /* 🔥 ZOOM DESDE CARD PRODUCTO */
+  const cardZoom = e.target.closest(".card-zoom-btn");
+
+  if(cardZoom){
+
+    e.stopPropagation();
+
+    viewerImg.src = cardZoom.dataset.img;
+
+    imageViewer.style.display = "flex";
+
+    return;
+  }
+
+});
+
+/* ===================== CERRAR CON BOTÓN ===================== */
+document
+.getElementById("closeViewer")
+.addEventListener("click", () => {
+
+  imageViewer.style.display = "none";
+
+});
+
+/* ===================== CERRAR TOCANDO FONDO ===================== */
+imageViewer.addEventListener("click", (e) => {
+
+  if(e.target === imageViewer){
+
+    imageViewer.style.display = "none";
+
+  }
+
+});
+
+/* ===================== STATE & STORAGE ===================== */
+let cart = [];           // items: {id,title,price,img,qty}
+let state = { q:'', filters:[] };
+
+const LS_CART = 'rdg_cart_final_mod';
+
+function money(n){ return '$'+Number(n).toFixed(2); }
+
+/* Load saved cart from localStorage */
+function loadState(){
+  try{
+    const c = localStorage.getItem(LS_CART);
+    cart = c ? JSON.parse(c) : [];
+  }catch(e){
+    cart = [];
+    console.warn('Error reading localStorage', e);
+  }
+}
+
+function saveState(){
+  try{
+    localStorage.setItem(LS_CART, JSON.stringify(cart));
+  }catch(e){
+    console.warn('Error saving localStorage', e);
+  }
+}
+
+// ===================== BUSQUEDA INTELIGENTE =====================
+
+// 🔥 distancia de Levenshtein
+function distancia(a, b) {
+  const matriz = [];
+
+  for (let i = 0; i <= b.length; i++) matriz[i] = [i];
+  for (let j = 0; j <= a.length; j++) matriz[0][j] = j;
+
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) === a.charAt(j - 1)) {
+        matriz[i][j] = matriz[i - 1][j - 1];
+      } else {
+        matriz[i][j] = Math.min(
+          matriz[i - 1][j - 1] + 1,
+          matriz[i][j - 1] + 1,
+          matriz[i - 1][j] + 1
+        );
+      }
+    }
+  }
+
+  return matriz[b.length][a.length];
+}
+
+// 🔥 comparación inteligente
+function esParecido(a, b) {
+  if (!a || !b) return false;
+
+  if (a.includes(b)) return true;
+
+  const dist = distancia(a, b);
+  return dist <= 2; // tolera errores
+}
+
+
+/* ===================== RENDER PRODUCTS (TEMU STYLE) ===================== */
+function render(){
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+
+  const prodCats = (p) => {
+    const c = p.categories ?? p.category ?? [];
+    return Array.isArray(c)
+      ? c.map(x => String(x).toLowerCase())
+      : [String(c).toLowerCase()];
+  };
+
+  // 🔥 LIMPIAR QUERY
+  const query = limpiarTexto(state.q || "");
+  const usingSearch = query.length > 0;
+
+  const filtered = products.filter(p => {
+    const texto = limpiarTexto(p.title + " " + (p.desc || ""));
+
+    if (usingSearch){
+      const palabras = query.split(" ").filter(x => x);
+      return palabras.every(palabra => texto.includes(palabra));
+    }
+
+    if (state.filters.length > 0){
+      const pc = prodCats(p);
+      return state.filters.some(f => pc.includes(String(f).toLowerCase()));
+    }
+
+    return true;
+  });
+
+/* ===================== SIN RESULTADOS + SUGERENCIAS ===================== */
+if (filtered.length === 0){
+
+  const e = document.createElement('div');
+  e.className = 'card';
+
+  let sugerenciasHTML = '';
+
+  if (query) {
+    const palabrasUsuario = query.split(" ").filter(x => x);
+    let sugerencias = [];
+
+    products.forEach(p => {
+      const texto = limpiarTexto(p.title);
+
+      texto.split(" ").forEach(palabraProducto => {
+        palabrasUsuario.forEach(palabraUsuario => {
+
+          if (
+            palabraProducto.includes(palabraUsuario) ||
+            palabraUsuario.includes(palabraProducto) ||
+            similitud(palabraUsuario, palabraProducto) > 0.4
+          ) {
+            sugerencias.push(palabraProducto);
+          }
+
+        });
+      });
+    });
+
+    sugerencias = [...new Set(sugerencias)].slice(0, 3);
+
+    if (sugerencias.length > 0) {
+      sugerenciasHTML = `
+        <div style="margin-top:10px;font-size:14px;">
+          Quizás quisiste decir:
+          ${sugerencias.map(s => `
+            <span class="suggestion-fix" style="color:#ff6600;cursor:pointer;margin-left:6px;">
+              ${s}
+            </span>
+          `).join("")}
+        </div>
+      `;
+    }
+  }
+
+  e.innerHTML = `
+    <div style="padding:16px;color:var(--muted)">
+      No hay productos.
+      ${sugerenciasHTML}
+    </div>
+  `;
+
+  grid.appendChild(e);
+
+  // 🔥 CLICK EN SUGERENCIAS
+  setTimeout(() => {
+    document.querySelectorAll('.suggestion-fix').forEach(el => {
+      el.addEventListener('click', () => {
+        const texto = el.textContent;
+
+        state.q = texto;
+        document.getElementById('q').value = texto;
+
+        render();
+      });
+    });
+  }, 0);
+
+  return;
+}
+/* ===================== PRODUCTOS ===================== */
+filtered.forEach(p => {
+
+  const el = document.createElement('div');
+  el.className = 'card';
+
+  // 🔥 CALCULAR DESCUENTO DINÁMICO
+  let descuento = 0;
+  let ahorro = 0;
+
+  if (p.original && p.original > p.price) {
+    descuento = Math.round((1 - p.price / p.original) * 100);
+    ahorro = (p.original - p.price);
+  }
+
+  el.innerHTML = `
+  <div class="thumb">
+
+    <!-- 🔥 BOTÓN ZOOM -->
+    <button class="card-zoom-btn" data-img="${p.img}">
+      +
+    </button>
+
+    ${descuento > 0 
+      ? `<div class="discount-badge">-${descuento}%</div>` 
+      : ``}
+
+    <img class="product-thumb"
+         src="${p.img}"
+         alt="${p.title}"
+         data-id="${p.id}">
+  </div>
+
+  <div class="p-title">${p.title}</div>
+
+  <div class="p-price">
+
+    <!-- 🔥 MISMA FILA -->
+    <div class="price-row">
+
+      <span class="now-price">
+        ${money(p.price)}
+      </span>
+
+      ${p.original && p.original > p.price 
+        ? `<span class="old-price">${money(p.original)}</span>` 
+        : ``}
+
+    </div>
+
+    ${ahorro > 0 
+      ? `<span class="save-price">${money(ahorro)}</span>` 
+      : ``}
+
+  </div>
+
+  <div class="actions">
+
+    <button class="btn-view" data-id="${p.id}">
+      Ver
+    </button>
+
+    <button class="btn-add" data-id="${p.id}">
+      Añadir
+    </button>
+
+  </div>
+  `;
+
+  /* ===================== ABRIR MODAL ===================== */
+  el.addEventListener('click', (e) => {
+
+    /* evitar abrir si presiona añadir */
+    if(e.target.classList.contains('btn-add')) return;
+
+    /* evitar conflicto con botón ver */
+    if(e.target.classList.contains('btn-view')) return;
+
+    /* evitar conflicto con zoom */
+    if(e.target.classList.contains('card-zoom-btn')) return;
+
+    openModal(p);
+
+  });
+
+  grid.appendChild(el);
+
+});
+}
+/* ===================== MODAL PRODUCT ===================== */
+
+/* ===================== CATEGORY FILTER ===================== */
+
+document.querySelectorAll(".category-item").forEach(item => {
+  item.addEventListener("click", () => {
+
+    // ❗ SI HABÍA BÚSQUEDA → se borra (para evitar bloqueo)
+    state.q = "";
+    const searchInput = document.getElementById("search");
+    searchInput.value = "";
+
+    // Obtener categoría clickeada
+    const f = item.dataset.filter;
+
+    // "Todos" → resetea filtros
+    if (f === "all") {
+      state.filters = [];
+      document.querySelectorAll(".category-item").forEach(e => e.classList.remove("active"));
+    } 
+    else {
+      // Activar solo la seleccionada
+      state.filters = [f];
+      document.querySelectorAll(".category-item").forEach(e => e.classList.remove("active"));
+      item.classList.add("active");
+    }
+
+    render();
+  });
+});
+
+/* ===================== MODAL PRODUCTO ===================== */
+
+// ABRIR MODAL (ACEPTA p o p.id)
+function openModal(p) {
+
+  // Ocultar sugerencias del buscador
+  const suggestionsBox = document.getElementById('suggestions');
+  if (suggestionsBox) {
+    suggestionsBox.innerHTML = '';
+    suggestionsBox.style.display = 'none';
+  }
+
+  // Si "p" es un número → buscar producto real
+  if (typeof p === "number") {
+    p = products.find(prod => prod.id === p);
+  }
+
+  if (!p) return;
+
+  const modal = document.getElementById('modal');
+
+  // IMAGEN
+  document.querySelector('#modalImg img').src = p.img;
+
+  // TÍTULO
+  document.getElementById('modalTitle').textContent = p.title;
+
+  // ================================
+  // 🔥 PRECIO NUEVO DISEÑO
+  // ================================
+  const price = Number(p.price) || 0;
+  const original = Number(p.original) || 0;
+
+  let ahorro = 0;
+  let percent = 0;
+
+  if (original > price) {
+    ahorro = original - price;
+    percent = Math.round((ahorro / original) * 100);
+  }
+
+  document.getElementById('modalPrice').innerHTML = `
+    <div class="price-line old">
+      <span class="price-value">${original > 0 ? `$${original.toFixed(2)}` : '-'}</span>
+      <span class="price-label">antes</span>
+    </div>
+
+    <div class="price-line now">
+      <span class="price-value">$${price.toFixed(2)}</span>
+      <span class="price-label">ahora</span>
+    </div>
+
+    <div class="price-line save">
+      <span class="price-value">${ahorro > 0 ? `$${ahorro.toFixed(2)}` : '-'}</span>
+      <span class="price-label">ahorras</span>
+    </div>
+  `;
+
+  // ================================
+  // 🔥 BADGE DE DESCUENTO
+  // ================================
+  const badge = document.getElementById('modalBadge');
+
+  if (badge) {
+    if (percent > 0) {
+      badge.style.display = 'block';
+      badge.textContent = `-${percent}%`;
+    } else {
+      badge.style.display = 'none';
+    }
+  }
+
+  // DESCRIPCIÓN
+  document.getElementById('modalDesc').textContent = p.desc ?? '';
+
+  // BOTÓN DE COMPRA
+  document.getElementById('buyNow').dataset.id = p.id;
+
+  // MOSTRAR MODAL
+  modal.style.display = 'flex';
+}
+
+// CERRAR MODAL
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+
+// CLICK EN BOTÓN "VER"
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('btn-view')) {
+    const id = Number(e.target.dataset.id);
+    const p = products.find(x => x.id === id);
+    if (p) openModal(p);
+  }
+});
+
+// CLICK EN BOTONES DE CERRAR
+document.querySelectorAll('.btn-close-modal').forEach(btn => {
+  btn.addEventListener('click', closeModal);
+});
+
+// CERRAR AL HACER CLICK EN EL FONDO OSCURO
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target.id === 'modal') closeModal();
+});
+
+
+/* ===================== ANIMATION: FLY-TO-CART ===================== */
+/*
+  animateFlyToCart:
+  - clones the image element and animates it to the cart icon's center
+  - when transition ends, removes clone and triggers a bounce on the cart counter
+*/
+function animateFlyToCart(imgEl, done){
+  try{
+    if(!imgEl) { if(done) done(); return; }
+    const cartIcon = document.getElementById('cartIconTop');
+    const rectImg = imgEl.getBoundingClientRect();
+    const rectCart = cartIcon.getBoundingClientRect();
+    const clone = imgEl.cloneNode(true);
+
+    // style clone to match original
+    clone.style.position = 'fixed';
+    clone.style.left = rectImg.left + 'px';
+    clone.style.top = rectImg.top + 'px';
+    clone.style.width = rectImg.width + 'px';
+    clone.style.height = rectImg.height + 'px';
+    clone.style.transition = 'transform 0.75s cubic-bezier(.2,.9,.2,1), opacity .75s ease';
+    clone.style.zIndex = 9999;
+    clone.style.borderRadius = '8px';
+    clone.style.pointerEvents = 'none';
+    document.body.appendChild(clone);
+
+    // compute deltas
+    const targetX = rectCart.left + rectCart.width/2 - (rectImg.left + rectImg.width/2);
+    const targetY = rectCart.top + rectCart.height/2 - (rectImg.top + rectImg.height/2);
+
+    // trigger animation
+    requestAnimationFrame(()=>{
+      clone.style.transform = `translate(${targetX}px, ${targetY}px) scale(0.18)`;
+      clone.style.opacity = '0.6';
+    });
+
+    // cleanup and bounce
+    clone.addEventListener('transitionend', ()=>{
+      // remove clone
+      clone.remove();
+      // bounce animation on counter
+      const cartCountEl = document.getElementById('cartTopCount');
+      if(cartCountEl){
+        cartCountEl.animate([
+          { transform: 'scale(1)' },
+          { transform: 'scale(1.35)' },
+          { transform: 'scale(1)' }
+        ], { duration: 300, easing: 'cubic-bezier(.2,.9,.2,1)' });
+      }
+      if(done) done();
+    }, { once:true });
+  }catch(e){
+    console.warn('fly animation failed', e);
+    if(done) done();
+  }
+}
+
+/* ===================== CART: add, render, update ===================== */
+/* addToCartById - supports optional source image element for animation */
+function addToCartById(id, qty=1, sourceImgEl=null){
+  const p = products.find(x=>x.id===Number(id)); if(!p) return;
+  const existing = cart.find(x=>x.id===p.id);
+
+  const finalizeAdd = ()=>{
+    if(existing) existing.qty += qty;
+    else cart.push({ id:p.id, title:p.title, price:p.price, img:p.img, qty: qty });
+    saveState();
+    renderCart();
+    showToast('Añadido al carrito');
+  };
+
+  if(sourceImgEl){
+    animateFlyToCart(sourceImgEl, finalizeAdd);
+  } else {
+    finalizeAdd();
+  }
+}
+
+/* handle clicks on "Añadir" and modal buy button */
+document.addEventListener('click', e=>{
+  if(e.target.classList.contains('btn-add')){
+    const id = Number(e.target.dataset.id);
+    const card = e.target.closest('.card');
+    const img = card ? card.querySelector('.thumb img') : null;
+    addToCartById(id,1,img);
+  }
+  if(e.target.id === 'buyNow'){
+    const id = Number(e.target.dataset.id);
+    if(id){
+      const img = document.querySelector('#modalImg img') || null;
+      addToCartById(id,1,img);
+    }
+    document.getElementById('modal').style.display = 'none';
+  }
+});
+
+/* Render mini thumbnails and cart panel list */
+function renderCart(){
+  const mini = document.getElementById('cartMiniItems');
+  const items = document.getElementById('cartItems');
+  mini.innerHTML = ''; items.innerHTML = '';
+  let total = 0;
+
+  cart.forEach((item,i)=>{
+    total += item.price * item.qty;
+    // mini thumbnail element
+    const t = document.createElement('div'); t.className = 'thumb-mini';
+    t.innerHTML = `<img src="${item.img}" alt="${item.title}"><div class="qty-badge">${item.qty}</div>`;
+    mini.appendChild(t);
+
+
+
+
+
+// panel line element
+const row = document.createElement('div');
+row.className = 'panel-item enhanced-cart-item';
+row.innerHTML = `
+  <img class="cart-thumb" src="${item.img}" alt="${item.title}">
+
+  <div class="info">
+    <strong class="cart-title">${item.title}</strong>
+    <div class="cart-unit-price">${money(item.price)} c/u</div>
+
+    <div class="qty-controls pretty-qty">
+      <button class="qty-btn dec" data-index="${i}">−</button>
+      <span class="qty-number">${item.qty}</span>
+      <button class="qty-btn inc" data-index="${i}">+</button>
+
+      <span class="line-total"> ${money(item.price * item.qty)} </span>
+    </div>
+  </div>
+
+  <button class="remove-btn-cart pretty-remove" data-index="${i}" title="Eliminar">
+    🗑️
+  </button>
+`;
+
+items.appendChild(row);
+
+
+
+
+
+
+
+
+
+
+
+
+
+  });
+
+  const count = cart.reduce((a,b)=>a+b.qty,0);
+  document.getElementById('cartMiniTotal').textContent = money(total);
+  document.getElementById('cartTotal').textContent = money(total);
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartTopCount').textContent = count;
+  document.getElementById('cartSummaryCount').textContent = `${count} artículo(s)`;
+  document.getElementById('cartFloat').style.display = cart.length? 'flex' : 'none';
+  saveState();
+}
+
+/* Increase / decrease / remove handlers inside cart panel */
+document.addEventListener('click', e=>{
+  if(e.target.classList.contains('inc')){
+    const i = Number(e.target.dataset.index); cart[i].qty++; renderCart();
+  }
+  if(e.target.classList.contains('dec')){
+    const i = Number(e.target.dataset.index);
+    if(cart[i].qty>1) cart[i].qty--; else cart.splice(i,1);
+    renderCart();
+  }
+  if(e.target.classList.contains('remove-btn-cart') || e.target.classList.contains('remove')){
+    const i = Number(e.target.dataset.index); cart.splice(i,1); renderCart();
+  }
+});
+
+/* ===================== Overlay logic ===================== */
+const overlay = document.getElementById('overlay');
+
+function showOverlay(){
+  overlay.style.visibility='visible';
+  overlay.style.opacity='1';
+  overlay.setAttribute('aria-hidden','false');
+}
+
+function hideOverlay(){
+  overlay.style.opacity='0';
+  setTimeout(()=>{
+    overlay.style.visibility='hidden';
+    overlay.setAttribute('aria-hidden','true');
+  },260);
+}
+
+/* 🔥 IMPORTANTE: ya NO existe favoritos */
+overlay.addEventListener('click', ()=>{ 
+  closeCartPanel(); 
+});
+
+/* ===================== Open / Close Panels ===================== */
+function isDesktop(){ return window.innerWidth > 900; }
+
+/* Cart open/close */
+function openCartPanel(){
+  const panel = document.getElementById('cartPanel');
+
+  document.getElementById('cartFloat').style.display='none';
+  showOverlay();
+
+  if(isDesktop()){
+    panel.classList.remove('panel-bottom');
+    panel.classList.add('panel-side');
+    panel.classList.remove('side-active');
+    void panel.offsetWidth;
+    panel.classList.add('side-active');
+    panel.setAttribute('aria-hidden','false');
+  } else {
+    panel.classList.remove('panel-side');
+    panel.classList.add('panel-bottom');
+    panel.classList.add('active');
+    panel.setAttribute('aria-hidden','false');
+  }
+}
+
+function closeCartPanel(){
+  const panel = document.getElementById('cartPanel');
+
+  hideOverlay();
+
+  if(isDesktop()){
+    panel.classList.remove('side-active');
+    setTimeout(()=>{
+      panel.setAttribute('aria-hidden','true');
+      panel.classList.remove('panel-side');
+    },360);
+  } else {
+    panel.classList.remove('active');
+    panel.setAttribute('aria-hidden','true');
+  }
+
+  if(cart.length){
+    document.getElementById('cartFloat').style.display = 'flex';
+  }
+}
+
+/* ===================== Bind UI events ===================== */
+document.getElementById('cartFloat').addEventListener('click', ()=> openCartPanel());
+document.getElementById('cartIconTop').addEventListener('click', ()=> openCartPanel());
+document.getElementById('closeCart').addEventListener('click', ()=> closeCartPanel());
+
+/* ===================== Checkout (WhatsApp) ===================== */
+document.getElementById('checkout').addEventListener('click', function () {
+
+  const btn = this;
+
+  if (cart.length === 0) {
+    alert('Carrito vacío');
+    return;
+  }
+
+  // Evita múltiples clics
+  btn.disabled = true;
+  btn.textContent = "Abriendo WhatsApp...";
+
+  let msg = "🛒 *Nuevo Pedido*%0A%0A";
+
+  cart.forEach(i => {
+    msg += `• *${i.title}* x${i.qty} = ${money(i.price * i.qty)}%0A`;
+  });
+
+  msg += `%0A*Total:* ${document.getElementById('cartTotal').textContent}`;
+
+  const phone = "593980156049";
+
+  const url = `https://wa.me/${phone}?text=${msg}`;
+
+  window.location.href = url;
+
+  // Por si el usuario vuelve atrás
+  setTimeout(() => {
+    btn.disabled = false;
+    btn.textContent = "Finalizar pedido";
+  }, 3000);
+
+});
+
+
+
+
+/* ===================== Search & suggestions ===================== */
+const inputQ = document.getElementById('q');
+const suggestionsBox = document.getElementById('suggestions');
+
+/* ----------- INPUT LISTENER / BUSCADOR ----------- */
+inputQ.addEventListener('input', (e) => {
+  const raw = e.target.value;
+  const v = limpiarTexto(raw);
+
+  if (!v) {
+    suggestionsBox.style.display = 'none';
+    suggestionsBox.innerHTML = '';
+    state.q = '';
+    render();
+    return;
+  }
+
+  const palabras = v.split(" ").filter(x => x);
+
+  const matches = products.filter(p => {
+    const texto = limpiarTexto(p.title + " " + (p.desc || ""));
+    return palabras.every(palabra => texto.includes(palabra));
+  }).slice(0, 8);
+
+  suggestionsBox.innerHTML = '';
+
+  // 🔥 SI HAY RESULTADOS NORMALES
+  if (matches.length > 0) {
+
+    matches.forEach(m => {
+      const it = document.createElement('div');
+      it.className = "suggestion-item";
+
+      // mostrar con emoji
+      it.textContent = m.title;
+
+      it.addEventListener('click', () => {
+        const limpio = limpiarTexto(m.title);
+
+        inputQ.value = limpio;
+        state.q = limpio;
+
+        suggestionsBox.style.display = 'none';
+        render();
+      });
+
+      suggestionsBox.appendChild(it);
+    });
+
+  } 
+  // 🔥 SI NO HAY RESULTADOS → SUGERENCIAS INTELIGENTES
+  else {
+
+    let sugerencias = [];
+
+    products.forEach(p => {
+      const texto = limpiarTexto(p.title);
+
+      texto.split(" ").forEach(palabraProducto => {
+        palabras.forEach(palabraUsuario => {
+
+          if (
+            palabraProducto.includes(palabraUsuario) ||
+            palabraUsuario.includes(palabraProducto) ||
+            similitud(palabraUsuario, palabraProducto) > 0.4
+          ) {
+            sugerencias.push(palabraProducto);
+          }
+
+        });
+      });
+    });
+
+    sugerencias = [...new Set(sugerencias)].slice(0, 3);
+
+    if (sugerencias.length > 0) {
+
+      const fix = document.createElement('div');
+      fix.className = "suggestion-item";
+      fix.style.color = "#ff6600";
+      fix.style.fontWeight = "600";
+
+      fix.textContent = "Quizás quisiste decir:";
+
+      suggestionsBox.appendChild(fix);
+
+      sugerencias.forEach(s => {
+        const it = document.createElement('div');
+        it.className = "suggestion-item";
+
+        it.textContent = s;
+
+        it.addEventListener('click', () => {
+          inputQ.value = s;
+          state.q = s;
+
+          suggestionsBox.style.display = 'none';
+          render();
+        });
+
+        suggestionsBox.appendChild(it);
+      });
+
+    }
+  }
+
+  suggestionsBox.style.display = 'block';
+
+  state.q = v;
+  render();
+});
+/* ----------- BOTÓN BUSCAR ----------- */
+document.getElementById('btnSearch').addEventListener('click', () => {
+  state.q = limpiarTexto(inputQ.value);
+  suggestionsBox.style.display = 'none';
+  render();
+});
+/* ----------- CATEGORÍAS ----------- */
+document.querySelectorAll('.category-item').forEach(c => {
+  c.addEventListener('click', () => {
+
+    document.querySelectorAll('.category-item')
+      .forEach(x => x.classList.remove('active'));
+
+    c.classList.add('active');
+
+    const f = c.dataset.filter;
+    state.filters = f === 'all' ? [] : [f];
+
+    render();
+
+    // ⭐ MOSTRAR / OCULTAR productos destacados (solo en "todos")
+    const featuredWindow = document.querySelector('.featured-window');
+
+    if (f === "all") {
+      featuredWindow.style.display = "block";  // mostrar
+    } else {
+      featuredWindow.style.display = "none";   // ocultar
+    }
+
+  });
+});
+
+
+
+
+// ---------- Dropdown de categorías (nuevo) ----------
+const catBtn = document.getElementById('catBtn');
+const catDropdown = document.getElementById('catDropdown');
+
+// show / hide dropdown (downwards)
+catBtn.addEventListener('click', (e) => {
+  e.stopPropagation(); // evita que el document click lo cierre inmediatamente
+  const isOpen = catDropdown.style.display === 'flex';
+  // cerramos otros menús móviles si hubiera
+  const mobileMenu = document.getElementById('mobileCategories');
+  if(mobileMenu) mobileMenu.style.display = 'none';
+
+  catDropdown.style.display = isOpen ? 'none' : 'flex';
+  catDropdown.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+});
+
+// cerrar si se clickea fuera
+document.addEventListener('click', (e) => {
+  if (!catBtn.contains(e.target) && !catDropdown.contains(e.target)) {
+    catDropdown.style.display = 'none';
+    catDropdown.setAttribute('aria-hidden','true');
+  }
+});
+
+// aplicar filtro cuando el usuario haga click en una categoría dentro del dropdown
+document.querySelectorAll('#catDropdown .item').forEach(item => {
+  item.addEventListener('click', (ev) => {
+    const f = item.dataset.filter;
+    state.filters = f === 'all' ? [] : [f];
+    render();
+    // marcar también la categoría activa en la barra principal (si existe)
+    document.querySelectorAll('.category-item').forEach(x=>x.classList.remove('active'));
+    // intenta encontrar la categoría equivalente en la barra y marcarla
+    const desktopMatch = Array.from(document.querySelectorAll('.category-item')).find(x=>x.dataset.filter === f);
+    if(desktopMatch) desktopMatch.classList.add('active');
+    catDropdown.style.display = 'none';
+    catDropdown.setAttribute('aria-hidden','true');
+  });
+});
+
+/* ===================== UI helpers: toast ===================== */
+let toastTimeout = null;
+
+function showToast(txt='Hecho'){
+  const t = document.getElementById('toast');
+  t.textContent = txt;
+  t.style.opacity = '1';
+
+  if(toastTimeout) clearTimeout(toastTimeout);
+
+  toastTimeout = setTimeout(()=>{
+    t.style.opacity = '0';
+  }, 1600);
+}
+
+/* ===================== Initialization ===================== */
+function init(){
+  loadState();
+  render();
+  renderCart();
+
+  // show mini-rect if there are items
+  if(cart.length){
+    document.getElementById('cartFloat').style.display = 'flex';
+  }
+}
+init();
+
+/* Ensure panels reset on resize to avoid stuck transforms */
+let resizeTimer = null;
+window.addEventListener('resize', ()=>{
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(()=>{
+    closeCartPanel();
+    hideOverlay();
+  },150);
+});
+
+
+
+
+
+/* ⭐⭐ ANIMACIÓN + GLOW EN LA BARRA DE CATEGORÍAS ⭐⭐ */
+
+/* El contenedor REAL que hace scroll es ".categories" */
+const catBar = document.querySelector('.categories');
+
+/* Indicador opcional (si existe en tu HTML) */
+const scrollIndicator = document.querySelector('.scroll-indicator');
+
+let scrollTimeout;
+
+catBar.addEventListener('scroll', () => {
+
+  // Añade clase glow
+  catBar.classList.add('scrolling');
+
+  // Mostrar indicador si existe
+  if (scrollIndicator) scrollIndicator.style.opacity = "1";
+
+  // Quitar el efecto después de no mover por 300ms
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    catBar.classList.remove('scrolling');
+    if (scrollIndicator) scrollIndicator.style.opacity = "0";
+  }, 400);
+});
+
+
+
+
+/* ======================================
+   PRODUCTOS DESTACADOS con MODAL REAL
+   ====================================== */
+
+function loadFeatured() {
+  const featuredList = document.getElementById("featuredList");
+  if (!featuredList) return;
+
+  featuredList.innerHTML = "";
+
+  // Asegurar que todos los precios sean números
+  const fixedProducts = products.map(p => ({
+    ...p,
+    price: Number(p.price),
+    original: Number(p.original)
+  }));
+
+  // Tomar SIEMPRE 8 productos sí o sí
+  const featured = [...fixedProducts]
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 8);
+
+  featured.forEach(p => {
+
+    let discount = "";
+    if (p.original && p.original > p.price) {
+      const percent = Math.round(( (p.original - p.price) / p.original ) * 100);
+      discount = `
+        <span class="featured-old">$${p.original.toFixed(2)}</span>
+        <span class="featured-discount">-${percent}%</span>
+      `;
+    }
+
+    const card = document.createElement("div");
+    card.className = "featured-card";
+
+    card.addEventListener("click", () => openModal(p));
+
+
+    card.innerHTML = `
+      <img src="${p.img}">
+      <h3>${p.title}</h3>
+
+      <div class="featured-price">
+        <span class="featured-new">$${p.price.toFixed(2)}</span>
+        ${discount}
+      </div>
+
+      <div class="featured-add-btn" onclick="addToCart(${p.id}); event.stopPropagation();">
+        Agregar 🛒
+      </div>
+    `;
+
+    featuredList.appendChild(card);
+  });
+}
+
+
+loadFeatured();
+
+
+
+
+
+
+</script>
+</body>
+</html>
